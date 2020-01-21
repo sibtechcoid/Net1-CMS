@@ -53,6 +53,7 @@ Banner
                 </h4></div>
             <br />
             <div class="card-body">
+                @csrf
 {{--            {!! Form::open(['route' => 'admin.banners.store']) !!}--}}
                 <form enctype="multipart/form-data" action="{{ route('admin.banners.store') }}" method="POST">
 

@@ -82,3 +82,33 @@ Route::group(array('prefix' => 'admin/','namespace' => 'Admin','middleware' => '
 // });
 
 
+
+
+Route::group(array('prefix' => 'admin/testMaster/','namespace' => 'Admin','middleware' => 'admin','as'=>'admin.testMaster.'), function () {
+
+Route::get('testModels', ['as'=> 'testModels.index', 'uses' => 'Testmaster\TestModelController@index']);
+Route::post('testModels', ['as'=> 'testModels.store', 'uses' => 'Testmaster\TestModelController@store']);
+Route::get('testModels/create', ['as'=> 'testModels.create', 'uses' => 'Testmaster\TestModelController@create']);
+Route::put('testModels/{testModels}', ['as'=> 'testModels.update', 'uses' => 'Testmaster\TestModelController@update']);
+Route::patch('testModels/{testModels}', ['as'=> 'testModels.update', 'uses' => 'Testmaster\TestModelController@update']);
+Route::get('testModels/{id}/delete', array('as' => 'testModels.delete', 'uses' => 'Testmaster\TestModelController@getDelete'));
+Route::get('testModels/{id}/confirm-delete', array('as' => 'testModels.confirm-delete', 'uses' => 'Testmaster\TestModelController@getModalDelete'));
+Route::get('testModels/{testModels}', ['as'=> 'testModels.show', 'uses' => 'Testmaster\TestModelController@show']);
+Route::get('testModels/{testModels}/edit', ['as'=> 'testModels.edit', 'uses' => 'Testmaster\TestModelController@edit']);
+
+});
+
+
+Route::group(array('prefix' => 'admin/testMaster/','namespace' => 'Admin','middleware' => 'admin','as'=>'admin.testMaster.'), function () {
+
+Route::get('testModels', ['as'=> 'testModels.index', 'uses' => 'Testmaster\TestModelController@index']);
+Route::post('testModels', ['as'=> 'testModels.store', 'uses' => 'Testmaster\TestModelController@store']);
+Route::get('testModels/create', ['as'=> 'testModels.create', 'uses' => 'Testmaster\TestModelController@create']);
+Route::put('testModels/{testModels}', ['as'=> 'testModels.update', 'uses' => 'Testmaster\TestModelController@update']);
+Route::patch('testModels/{testModels}', ['as'=> 'testModels.update', 'uses' => 'Testmaster\TestModelController@update']);
+Route::get('testModels/{id}/delete', array('as' => 'testModels.delete', 'uses' => 'Testmaster\TestModelController@getDelete'));
+Route::get('testModels/{id}/confirm-delete', array('as' => 'testModels.confirm-delete', 'uses' => 'Testmaster\TestModelController@getModalDelete'));
+Route::get('testModels/{testModels}', ['as'=> 'testModels.show', 'uses' => 'Testmaster\TestModelController@show']);
+Route::get('testModels/{testModels}/edit', ['as'=> 'testModels.edit', 'uses' => 'Testmaster\TestModelController@edit']);
+
+});

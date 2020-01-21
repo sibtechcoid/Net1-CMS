@@ -76,8 +76,10 @@
 .btn-3d.active,
 .btn-3d.is-active {
   top: 5px;
+  -webkit-transition-property: all;
   transition-property: all;
-  transition-duration: 0.15s;
+  -webkit-transition-duration: 0.15s;
+          transition-duration: 0.15s;
   box-shadow: 0 2px 0 #bbbbbb, 0 3px 3px rgba(0, 0, 0, 0.2);
 }
 

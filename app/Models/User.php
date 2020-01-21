@@ -1,45 +1,64 @@
-<?php
+<?php namespace App\Models;
+use Cartalyst\Sentinel\Users\EloquentUser;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentTaggable\Taggable;
 
-namespace App\Models;
-
-use App\Helpers\Curl;
-use App\Helpers\ApiUrl;
-use Illuminate\Support\Facades\Cookie;
-
-class User
+class User extends EloquentUser
 {
-    private $curl;
+    /**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
 
-    public function __construct()
+	protected $table = 'users';
+
+	/**
+	 * The attributes to be fillable from the model.
+	 *
+	 * A dirty hack to allow fields to be fillable by calling empty fillable array
+	 *
+	 * @var array
+	 */
+    use Taggable;
+
+	protected $fillable = [];
+	protected $guarded = ['id'];
+	/**
+	 * The attributes excluded from the model's JSON form.
+	 *
+	 * @var array
+	 */
+	protected $hidden = ['password', 'remember_token'];
+
+	/**
+	* To allow soft deletes
+	*/
+	use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
+    protected $appends = ['full_name'];
+    public function getFullNameAttribute()
     {
-        $this->curl = new Curl();
-        $this->curl->setAccessToken(Cookie::get('authToken'));
+        return str_limit($this->first_name . ' ' . $this->last_name, 30);
+    }
+    public function country() {
+        return $this->belongsTo( Country::class );
+	}
+	
+	public static function getSlightInfo() {
+		$response=[];
+		$response[]=[
+			'currentUser'=>[]
+		];
+		$response['currentUser']=[
+			'picture' => null,
+			'first_name'=>'Test',
+			'last_name'=>'Hoho',
+			'id'=>'1'
+		];
+		return $response;
     }
 
-    public function getAllUsers()
-    {
-        $response = $this->curl->httpGet(ApiUrl::$url.'users');
-        $response = json_decode($response, true);
-
-        return $response;
-    }
-
-    public function addUser($fields)
-    {
-        $response = $this->curl->httpPost(ApiUrl::$url.'users', $fields);
-        $response = json_decode($response, true);
-
-        return $response;
-    }
-
-    public static function getSlightInfo() {
-        if(Cookie::get('authToken')!=null) {
-            $curl = new Curl();
-            $curl->setAccessToken(Cookie::get('authToken'));
-            $response = $curl->httpGet(ApiUrl::$url.'currentUserSlightInfo');
-            $response = json_decode($response, true);
-            return $response;
-        }
-
-    }
 }

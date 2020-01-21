@@ -2,6 +2,7 @@
 
 //use App\Models\Admin;
 use App\Models\User;
+use App\Models\Activity_admin;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Controller;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use App\Helpers\Curl;
 use App\Helpers\ApiUrl;
+use Sentinel;
 // use Mail;
 // use Reminder;
 // use Sentinel;
@@ -57,27 +59,65 @@ class AuthController extends Controller
      */
     public function postSignin(Request $request)
     {
-        $fields = [
-            'login_type' => 'admin',
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-        $response = $this->curl->httpPost('localhost:8000/api/login', $fields);
-        $response = json_decode($response, true);
-        if(is_array($response)) {
-            if(array_key_exists('errors', $response)) {
-                return back()->withInput()->withErrors(['email' => $response['message']]);
+
+        try {
+            // Try to log the user in
+            if ($user = Sentinel::authenticate($request->only(['email', 'password']), $request->get('remember-me', 0))) {
+                // Redirect to the dashboard page
+                //Activity log
+                activity($user->full_name)
+                    ->performedOn($user)
+                    ->causedBy($user)
+                    ->log('LoggedIn');
+                //activity log ends
+
+                $current_user_adminSide = User::whereEmail($request->get('email'))->first();
+                $activity_admin = new Activity_admin;
+                $activity_admin -> description = 'LoggedIn';
+                $activity_admin -> user_id = $current_user_adminSide->id;
+                $activity_admin -> ip_address = $request->getClientIp();
+                $activity_admin -> save();
+
+                // Cookie::queue(Cookie::make('authToken', "asdasdasdasdasdsa", "3600"));
+                // return redirect()->route('admin.dashboard');
+                return Redirect::route("admin.dashboard")->with('success', trans('auth/message.signin.success'));
             }
-            else if(array_key_exists('token_name', $response)) {
-                // echo $response['access_token'];
-                Cookie::queue(Cookie::make('authToken', $response['access_token'], $response['expires_at']));
-                return redirect()->route('admin.dashboard');
-            }
+
+            // $this->messageBag->add('email', trans('auth/message.account_not_found'));
+
+        } catch (NotActivatedException $e) {
+            $this->messageBag->add('email', trans('auth/message.account_not_activated'));
+        } catch (ThrottlingException $e) {
+            $delay = $e->getDelay();
+            $this->messageBag->add('email', trans('auth/message.account_suspended', compact('delay')));
         }
-        else if($response == 7) {
-            return back()->withInput();
-        }
+
+        // Ooops.. something went wrong
+        return Redirect::back()->withInput();
     }
+    // public function postSignin(Request $request)
+    // {
+    //     $fields = [
+    //         'login_type' => 'admin',
+    //         'email' => $request->email,
+    //         'password' => $request->password
+    //     ];
+    //     $response = $this->curl->httpPost('localhost:8000/api/login', $fields);
+    //     $response = json_decode($response, true);
+    //     if(is_array($response)) {
+    //         if(array_key_exists('errors', $response)) {
+    //             return back()->withInput()->withErrors(['email' => $response['message']]);
+    //         }
+    //         else if(array_key_exists('token_name', $response)) {
+    //             // echo $response['access_token'];
+    //             Cookie::queue(Cookie::make('authToken', $response['access_token'], $response['expires_at']));
+    //             return redirect()->route('admin.dashboard');
+    //         }
+    //     }
+    //     else if($response == 7) {
+    //         return back()->withInput();
+    //     }
+    // }
 
     /**
      * Account sign up form processing.

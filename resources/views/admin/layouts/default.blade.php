@@ -83,7 +83,7 @@
                         </li>
                         <li role="presentation"></li>
                         <li>
-                            <a href="route('admin.users.edit', $userInfo['currentUser']['id'])">
+                            <a href="{{route('admin.users.edit', $userInfo['currentUser']['id'])}}">
                                 <i class="livicon" data-name="gears" data-s="18"></i>
                                 Account Settings
                             </a>
@@ -116,7 +116,7 @@
         <section class="sidebar ">
             <div class="page-sidebar  sidebar-nav">
                 <div class="nav_icons">
-                    <ul class="sidebar_threeicons">
+                    {{-- <ul class="sidebar_threeicons">
                         <li>
                             <a href="{{ URL::to('admin/advanced_tables') }}">
                                 <i class="livicon" data-name="table" title="Advanced tables" data-loop="true"
@@ -141,7 +141,7 @@
                                    data-color="#6CC66C" data-hc="#6CC66C" data-s="25"></i>
                             </a>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </div>
                 <div class="clearfix"></div>
                 <!-- BEGIN SIDEBAR MENU -->
