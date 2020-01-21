@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\CustomerAccount;
+use App\ApiModels\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -47,9 +47,8 @@ class CustomerInfo extends Controller
                 'customer_contacts.phone_office',
                 'customer_contacts.fax_number',
                 'customer_contacts.created_at as customer_contacts_created_at',
-                'customer_contacts.updated_at as customer_contacts_updated_at',
-                )
-            ->first();
+                'customer_contacts.updated_at as customer_contacts_updated_at'
+            )->first();
             $response['customerDetail'] = $customer_detail;
             $response['code'] = 200;
         return response()->json($response);

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Plan;
+use App\ApiModels\Plan;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

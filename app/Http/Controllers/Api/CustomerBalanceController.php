@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\CustomerBalance;
+use App\ApiModels\CustomerBalance;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

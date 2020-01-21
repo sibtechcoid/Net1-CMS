@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Banner;
+use App\ApiModels\Banner;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
