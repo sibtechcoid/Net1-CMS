@@ -14,6 +14,8 @@ class Product extends Model
 
 
     public $fillable = [
+        // tambah plan_id,zone_price_status,product_price
+        'plan_id', // +
         'plan',
         'product_type',
         'product_name',
@@ -21,6 +23,8 @@ class Product extends Model
         'product_description',
         'product_expiry_in_days',
         'publish'
+        'zone_price_status', //+
+        'product_price', // +
     ];
 
     /**
@@ -53,6 +57,7 @@ class Product extends Model
     ];
 
     public function zonePrices() {
-    	return $this->hasMany('App\Models\Admin\ZonePrice');
+        return $this->hasMany('App\Models\Admin\ZonePrice');
+        // sebelumnya (return $this->hasMany('App\ZonePrice');) <- backend
     }
 }

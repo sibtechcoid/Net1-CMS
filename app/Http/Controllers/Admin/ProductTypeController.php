@@ -10,16 +10,18 @@ use App\Models\Admin\Product;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Helpers\ApiUrl;
-use App\Helpers\Curl;
+// use App\Helpers\ApiUrl;
+// use App\Helpers\Curl;
+use GuzzleHttp\Client;
+
 
 class ProductTypeController extends Controller
 {
-    private $curl;
-    public function __construct()
-    {
-        $this->curl = new Curl();
-    }
+    // private $curl;
+    // public function __construct()
+    // {
+    //     $this->curl = new Curl();
+    // }
 
     /**
      * Display a listing of the ProductType.
@@ -27,16 +29,35 @@ class ProductTypeController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $this->curl->setAccessToken($request->cookie('authToken'));
-        $response = $this->curl->httpGet(ApiUrl::$url.'productTypes');
-        $response = json_decode($response, true);
+        // $this->curl->setAccessToken($request->cookie('authToken'));
+        // $response = $this->curl->httpGet(ApiUrl::$url.'productTypes');
+        // $response = json_decode($response, true);
+//ganti sama product list
 
-        return view('admin.productTypes.index')
-            ->with('response', $response)->with('userInfo', User::getSlightInfo());
+$data= [
+    'data' => [''],
+];
+$client = new Client([
+    'auth' => [
+        'admin',
+         'admin'],
+    'header' => [
+        'content-type' => 'application/json;charset=UTF-8'],
+       
+    ]);
+$request = $client->request('POST','http://10.211.1.21:8000/v1/uat/getProductList',[
+    'json' => $data,
+]);
+$response = $request->getBody()->getContents();
+$result = json_decode($response,true);
+// dd($result);
+        return view('admin.productTypes.index')->with('product',$result);
+        //     ->with('response', $response)->with('userInfo', User::getSlightInfo());
+        // dd($result);
+    
     }
-
     /**
      * Show the form for creating a new ProductType.
      *

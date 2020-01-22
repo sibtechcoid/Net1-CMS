@@ -29,6 +29,8 @@ Route::middleware('auth:api')->group(function () {
 
 
     // All about product routes
+    Route::get('productlist', 'Api\ProductlistController@getGuzzleRequest'); // product list dari bss
+    Route::get('productlistm','ProductlistmobileController@index');// productlis mobile send client
     Route::apiResource('plans', 'Api\PlanController');
     Route::apiResource('products', 'Api\ProductController');
     Route::put('product/{product}/activate', 'Api\ProductController@activate');

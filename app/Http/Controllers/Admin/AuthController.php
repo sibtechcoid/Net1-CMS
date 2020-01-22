@@ -78,7 +78,7 @@ class AuthController extends Controller
                 $activity_admin -> ip_address = $request->getClientIp();
                 $activity_admin -> save();
 
-                // Cookie::queue(Cookie::make('authToken', "asdasdasdasdasdsa", "3600"));
+                Cookie::queue(Cookie::make('authToken', "asdasdasdasdasdsa", "3600"));
                 // return redirect()->route('admin.dashboard');
                 return Redirect::route("admin.dashboard")->with('success', trans('auth/message.signin.success'));
             }
@@ -103,6 +103,7 @@ class AuthController extends Controller
     //         'password' => $request->password
     //     ];
     //     $response = $this->curl->httpPost('localhost:8000/api/login', $fields);
+    //     echo $response;
     //     $response = json_decode($response, true);
     //     if(is_array($response)) {
     //         if(array_key_exists('errors', $response)) {
@@ -111,7 +112,9 @@ class AuthController extends Controller
     //         else if(array_key_exists('token_name', $response)) {
     //             // echo $response['access_token'];
     //             Cookie::queue(Cookie::make('authToken', $response['access_token'], $response['expires_at']));
-    //             return redirect()->route('admin.dashboard');
+    //             return Redirect::route("admin.dashboard")->with('success', trans('auth/message.signin.success'));
+ 
+    //             //return redirect()->route('admin.dashboard');
     //         }
     //     }
     //     else if($response == 7) {

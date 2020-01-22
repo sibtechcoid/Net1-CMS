@@ -7,10 +7,13 @@
      </tr>
     </thead>
     <tbody>
-    @foreach($response['productTypes'] as $productType)
+    {{-- @foreach($product['responseObject'] as $productType)
+    @foreach ($productType as $item)
+        
+    @endforeach --}}
         <tr>
-            <td>{!! $productType['product_type'] !!}</td>
-            <td>
+            <td>{!! dd($product)!!}</td>
+            {{-- <td>
                  <a href="{{ route('admin.productTypes.show', collect($productType)->first() ) }}">
                      <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view productType"></i>
                  </a>
@@ -21,9 +24,9 @@
                      <i class="livicon" data-name="remove-alt" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete productType"></i>
 
                  </a>
-            </td>
+            </td> --}}
         </tr>
-    @endforeach
+    {{-- @endforeach --}}
     </tbody>
 </table>
 </div>
