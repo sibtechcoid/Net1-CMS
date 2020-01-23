@@ -14,11 +14,11 @@ use App\Helpers\Curl;
 
 class CustomerController extends Controller
 {
-    private $curl;
-    public function __construct()
-    {
-        $this->curl = new Curl();
-    }
+    // private $curl;
+    // public function __construct()
+    // {
+    //     $this->curl = new Curl();
+    // }
 
     /**
      * Display a listing of the Customer.
@@ -28,12 +28,12 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        $this->curl->setAccessToken($request->cookie('authToken'));
-        $response = $this->curl->httpGet(ApiUrl::$url.'customers');
-        $response = json_decode($response, true);
+        // $this->curl->setAccessToken($request->cookie('authToken'));
+        // $response = $this->curl->httpGet(ApiUrl::$url.'customers');
+        // $response = json_decode($response, true);
 
-        return view('admin.customers.index')
-            ->with('response', $response)->with('userInfo', User::getSlightInfo());
+        return view('admin.customers.index');
+            // ->with('response', $response)->with('userInfo', User::getSlightInfo());
     }
 
     /**

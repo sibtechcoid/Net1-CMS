@@ -46,16 +46,16 @@
                 @include('admin.layouts._notifications')
                 <li class=" nav-item dropdown user user-menu">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        @if($userInfo['currentUser']['picture'] != null || $userInfo['currentUser']['picture']!='')
-                            <img src="{{ $userInfo['currentUser']['picture'] }}" alt="img" height="35px" width="35px"
-                                 class="rounded-circle img-fluid float-left"/>
-                        @else
+                        {{-- @if($userInfo['currentUser']['picture'] != null || $userInfo['currentUser']['picture']!='') --}}
+                            {{-- <img src="{{ $userInfo['currentUser']['picture'] }}" alt="img" height="35px" width="35px"
+                                 class="rounded-circle img-fluid float-left"/> --}}
+                        {{-- @else
                             <img src="{{ asset('images/authors/no_avatar.jpg') }}" alt="img" height="35px" width="35px"
                                  class="rounded-circle img-fluid float-left"/>
-                        @endif
+                        @endif --}}
                         <div class="riot">
                             <div>
-                                <p class="user_name_max">{{ $userInfo['currentUser']['first_name'] }} {{ $userInfo['currentUser']['last_name'] }}</p>
+                                {{-- <p class="user_name_max">{{ $userInfo['currentUser']['first_name'] }} {{ $userInfo['currentUser']['last_name'] }}</p> --}}
                                 <span>
                                         <i class="caret"></i>
                                     </span>
@@ -65,36 +65,36 @@
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header bg-light-blue">
-                            @if($userInfo['currentUser']['picture']!='' || $userInfo['currentUser']['picture']!=null)
-                                <img src="{{  $userInfo['currentUser']['picture'] }}" alt="img" height="35px" width="35px"
+                            {{-- @if($userInfo['currentUser']['picture']!='' || $userInfo['currentUser']['picture']!=null) --}}
+                                {{-- <img src="{{  $userInfo['currentUser']['picture'] }}" alt="img" height="35px" width="35px" --}}
                                      class="rounded-circle img-fluid float-left"/>
-                            @else
-                                <img src="{{ asset('images/authors/no_avatar.jpg') }}" alt="img" height="35px" width="35px"
+                            {{-- @else --}}
+                                {{-- <img src="{{ asset('images/authors/no_avatar.jpg') }}" alt="img" height="35px" width="35px" --}}
                                      class="rounded-circle img-fluid float-left"/>
-                            @endif
-                            <p class="topprofiletext">{{ $userInfo['currentUser']['first_name'] }} {{ $userInfo['currentUser']['last_name'] }}</p>
+                            {{-- @endif --}}
+                            {{-- <p class="topprofiletext">{{ $userInfo['currentUser']['first_name'] }} {{ $userInfo['currentUser']['last_name'] }}</p> --}}
                         </li>
                         <!-- Menu Body -->
                         <li>
-                            <a href="{{route('admin.users.show', $userInfo['currentUser']['id'])}}">
+                            {{-- <a href="{{route('admin.users.show', $userInfo['currentUser']['id'])}}">
                                 <i class="livicon" data-name="user" data-s="18"></i>
                                 My Profile
-                            </a>
+                            </a> --}}
                         </li>
                         <li role="presentation"></li>
                         <li>
-                            <a href="{{route('admin.users.edit', $userInfo['currentUser']['id'])}}">
+                            {{-- <a href="{{route('admin.users.edit', $userInfo['currentUser']['id'])}}">
                                 <i class="livicon" data-name="gears" data-s="18"></i>
                                 Account Settings
-                            </a>
+                            </a> --}}
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="float-left">
-                                <a href="URL::route('lockscreen',$userInfo['currentUser']['id'])">
+                                {{-- <a href="URL::route('lockscreen',$userInfo['currentUser']['id'])">
                                     <i class="livicon" data-name="lock" data-size="16" data-c="#555555" data-hc="#555555" data-loop="true"></i>
                                     Lock
-                                </a>
+                                </a> --}}
                             </div>
                             <div class="float-right">
                                 <a href="{{ URL::to('admin/logout') }}">

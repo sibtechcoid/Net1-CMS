@@ -2,31 +2,37 @@
 <table class="table table-striped table-bordered" id="productTypes-table" width="100%">
     <thead>
      <tr>
-        <th>Product Type</th>
-        <th >Action</th>
+        <th>offerID</th>
+        <th >offerName</th>
+        <th >description</th>
+        <th >chargingType</th>
+        <th >offerType</th>
+        <th >serviceZone</th>
+        <th >totalPrice</th>
      </tr>
     </thead>
     <tbody>
-    {{-- @foreach($product['responseObject'] as $productType)
-    @foreach ($productType as $item)
+    
+    @foreach ($productlist as $mydata )
         
-    @endforeach --}}
+  
         <tr>
-            <td>{!! dd($product)!!}</td>
+            <td>{{ $mydata['offerID']}}</td>
+            {{-- <td>{{ $mydata['offerName']}}</td> --}}
             {{-- <td>
-                 <a href="{{ route('admin.productTypes.show', collect($productType)->first() ) }}">
+                 <a href="{{ route('admin.productTypes.show', collect($show ?? '')->first() ) }}">
                      <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view productType"></i>
                  </a>
-                 <a href="{{ route('admin.productTypes.edit', collect($productType)->first() ) }}">
+                 <a href="{{ route('admin.productTypes.edit', collect($show ?? '')->first() ) }}">
                      <i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="edit productType"></i>
                  </a>
-                 <a href="{{ route('admin.productTypes.confirm-delete', collect($productType)->first() ) }}" data-toggle="modal" data-target="#delete_confirm" data-id="{{ route('admin.productTypes.delete', collect($productType)->first() ) }}">
+                 <a href="{{ route('admin.productTypes.confirm-delete', collect($show ?? '')->first() ) }}" data-toggle="modal" data-target="#delete_confirm" data-id="{{ route('admin.productTypes.delete', collect($productType)->first() ) }}">
                      <i class="livicon" data-name="remove-alt" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete productType"></i>
 
                  </a>
             </td> --}}
         </tr>
-    {{-- @endforeach --}}
+    @endforeach
     </tbody>
 </table>
 </div>

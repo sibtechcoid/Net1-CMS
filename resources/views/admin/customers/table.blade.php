@@ -20,9 +20,10 @@
      </tr>
     </thead>
     <tbody>
-    @foreach($response['customers'] as $customer)
+        <td> test</td>
+    {{-- @foreach($response['customers'] as $customer) --}}
         <tr>
-            <td>
+            {{-- <td>
                 <a href="{{ route('admin.customers.show', collect($customer)->first() ) }}">
                     <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view customer"></i>
                 </a>
@@ -32,8 +33,8 @@
                 <!-- <a href="{{ route('admin.customers.confirm-delete', collect($customer)->first() ) }}" data-toggle="modal" data-target="#delete_confirm" data-id="{{ route('admin.customers.delete', collect($customer)->first() ) }}">
                     <i class="livicon" data-name="remove-alt" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete customer"></i>
                 </a> -->
-            </td>
-            <td>{!! $customer['account_customer_segment'] !!}</td>
+            </td> --}}
+            {{-- <td>{!! $customer['account_customer_segment'] !!}</td>
             <td>{!! $customer['residence_type'] !!}</td>
             <td>{!! $customer['msisdn'] !!}</td>
             <td>{!! $customer['account_name'] !!}</td>
@@ -46,9 +47,9 @@
             <td>{!! $customer['kk_number'] !!}</td>
             <td>{!! $customer['email'] !!}</td>
             <td>{!! $customer['device_id'] !!}</td>
-            <td>{!! $customer['preferred_language'] !!}</td>
+            <td>{!! $customer['preferred_language'] !!}</td> --}}
         </tr>
-    @endforeach
+    {{-- @endforeach --}}
     </tbody>
 </table>
 </div>

@@ -17,11 +17,7 @@ use GuzzleHttp\Client;
 
 class ProductTypeController extends Controller
 {
-    // private $curl;
-    // public function __construct()
-    // {
-    //     $this->curl = new Curl();
-    // }
+ 
 
     /**
      * Display a listing of the ProductType.
@@ -31,10 +27,8 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
-        // $this->curl->setAccessToken($request->cookie('authToken'));
-        // $response = $this->curl->httpGet(ApiUrl::$url.'productTypes');
-        // $response = json_decode($response, true);
-//ganti sama product list
+       
+// ganti sama product list
 
 $data= [
     'data' => [''],
@@ -52,47 +46,72 @@ $request = $client->request('POST','http://10.211.1.21:8000/v1/uat/getProductLis
 ]);
 $response = $request->getBody()->getContents();
 $result = json_decode($response,true);
-// return $result['responseObject'];
-    }
-public function saveDB(){
-    $res = $this->$index();
-    echo $res['offerID'];
-   echo $res['offerName'];
-    echo $res['description'];
-    echo $res['changingType'];
-    echo $res['offerType'];
-    echo $res['serviceZone'];
-    echo $res['totalPrice'];
-    // $arr=[];
-    // for ($i=0; $i < count($res); $i++){
-    // array_push($arr,['offerID']=>$res[$i],
-    // 'offerName'=>$res[$i],
-    // 'description'=>$res[$i],
-    // 'changingType'=>$res[$i],
-    // 'offerType'=>$res[$i],
-    // 'serviceZone'=>$res[$i],
-    // 'totalPrice'=>$res[$i],
-    // );
-    // }
-    // Productlist::insert($arr);
-// collect([$res])
+ $p=$result['responseObject'];
+// $p=collect($result);
+// dd($p);
+foreach($p as $mydata)
+
+    {
+        //  echo $mydata['offerID'] . "\n";
+        //  echo $mydata['offerName'];
+         isset($mydata['description']) ? $mydata['description'] :  
+         $e=$mydata['descripstion']='kosong'; 
+     
+        //  echo $mydata['chargingType'];
+        // //  echo isset($mydata['chargingType']) ? $mydata['chargingType'] :  
+        // //  $s=$mydata['chargingType']='kosong'; 
+        //  echo $mydata['offerType'];
+        //  echo $mydata['serviceZone'];
+        //  echo $mydata['totalPrice'];
+        
+        //  if ($mydata['offerID']) {
+        //      # code...
+        //  } else {
+        //      # code...
+        //  }
+         
+         ProductType::insert([
+            'offerID' =>$mydata['offerID'],
+            'offerName'=>$mydata['offerName'],
+            'description'=>$e,
+            'chargingType'=>$mydata['chargingType'],
+            'offerType'=>$mydata['offerType'],
+            'serviceZone'=>$mydata['serviceZone'],
+            'totalPrice'=>$mydata['totalPrice']
+        ]);
+        return view('admin.productTypes.index',['productlist'=>$mydata]);
+    } 
+
+  
+// public function saveDB()
+// {
+//     $res = $this->$result;
+//    $p= collect([$res]);
+  
+// dd($p);
+//    foreach($p as $a=>$value){
+//        echo $value;
+
+//    }
 // ->each(function ($resl,$key){
 //     Productlist::insert([
-//         'offerID' =>$resl['offerID'],
-//         'offerName'=>$resl['offerName'],
-//         'description'=>$resl['description'],
-//         'changingType'=>$resl['changingType'],
-//         'offerType'=>$resl['offerType'],
-//         'serviceZone'=>$resl['serviceZone'],
-//         'totalPrice'=>$resl['totalPrice']
+//         'offerID' =>$resl[0]['responseObject']['offerID'],
+//         'offerName'=>$resl[0]['responseObject']['offerName'],
+//         'description'=>$resl[0]['responseObject']['description'],
+//         'changingType'=>$resl[0]['responseObject']['changingType'],
+//         'offerType'=>$resl[0]['responseObject']['offerType'],
+//         'serviceZone'=>$resl[0]['responseObject']['serviceZone'],
+//         'totalPrice'=>$resl[0]['responseObject']['totalPrice']
 //     ]);
-// });
+    // });
+}
 
-return view('admin.productTypes.index')->with('product',$resl);
+
+// return view('admin.productTypes.index')->with('product',$mydata);
         //     ->with('response', $response)->with('userInfo', User::getSlightInfo());
         // dd($result);
     
-    }
+    
     /**
      * Show the form for creating a new ProductType.
      *
@@ -152,7 +171,7 @@ return view('admin.productTypes.index')->with('product',$resl);
      *
      * @return Response
      */
-    public function show($id)
+    public function show()
     {
         // $productType = $this->productTypeRepository->findWithoutFail($id);
 
@@ -161,8 +180,10 @@ return view('admin.productTypes.index')->with('product',$resl);
 
         //     return redirect(route('productTypes.index'));
         // }
-
-        // return view('admin.productTypes.show')->with('productType', $productType);
+        $productlist = DB::table('productlist')->get();
+        return view('admin.productTypes.show',['productType'=>$productlist]);
+// $show = App\ProductType::all();
+// return view('admin.productTypes.show')->with('productType', $show);
     }
 
     /**

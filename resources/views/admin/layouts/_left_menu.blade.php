@@ -39,12 +39,12 @@
                     Add New User
                 </a>
             </li>
-            <li {!! ((Request::is('admin/users/*')) && !(Request::is('admin/users/create')) || Request::is('admin/user_profile') ? 'class="active" id="active"' : '' ) !!}>
+            {{-- <li {!! ((Request::is('admin/users/*')) && !(Request::is('admin/users/create')) || Request::is('admin/user_profile') ? 'class="active" id="active"' : '' ) !!}>
                 <a href="{{URL::route('admin.users.show',$userInfo['currentUser']['id'])}}">
                     <i class="fa fa-angle-double-right"></i>
                     View Profile
                 </a>
-            </li>
+            </li> --}}
             <li {!! (Request::is('admin/deleted_users') ? 'class="active" id="active"' : '' ) !!}>
                 <a href="{{ URL::to('admin/deleted_users') }}">
                     <i class="fa fa-angle-double-right"></i>

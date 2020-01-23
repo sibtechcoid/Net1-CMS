@@ -35,7 +35,7 @@ Route::middleware('auth:api')->group(function () {
     Route::apiResource('products', 'Api\ProductController');
     Route::put('product/{product}/activate', 'Api\ProductController@activate');
     Route::put('product/{product}/deactivate', 'Api\ProductController@deactivate');
-    Route::apiResource('productTypes', 'Api\ProductTypeController');
+    Route::apiResource('productTypes', 'Api\ProductTypeController@index');
     Route::apiResource('zonePrices', 'Api\ZonePriceController')->except([
         'index', 'update'
     ]);
