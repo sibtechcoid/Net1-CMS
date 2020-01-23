@@ -52,8 +52,43 @@ $request = $client->request('POST','http://10.211.1.21:8000/v1/uat/getProductLis
 ]);
 $response = $request->getBody()->getContents();
 $result = json_decode($response,true);
-// dd($result);
-        return view('admin.productTypes.index')->with('product',$result);
+// return $result['responseObject'];
+    }
+public function saveDB(){
+    $res = $this->$index();
+    echo $res['offerID'];
+   echo $res['offerName'];
+    echo $res['description'];
+    echo $res['changingType'];
+    echo $res['offerType'];
+    echo $res['serviceZone'];
+    echo $res['totalPrice'];
+    // $arr=[];
+    // for ($i=0; $i < count($res); $i++){
+    // array_push($arr,['offerID']=>$res[$i],
+    // 'offerName'=>$res[$i],
+    // 'description'=>$res[$i],
+    // 'changingType'=>$res[$i],
+    // 'offerType'=>$res[$i],
+    // 'serviceZone'=>$res[$i],
+    // 'totalPrice'=>$res[$i],
+    // );
+    // }
+    // Productlist::insert($arr);
+// collect([$res])
+// ->each(function ($resl,$key){
+//     Productlist::insert([
+//         'offerID' =>$resl['offerID'],
+//         'offerName'=>$resl['offerName'],
+//         'description'=>$resl['description'],
+//         'changingType'=>$resl['changingType'],
+//         'offerType'=>$resl['offerType'],
+//         'serviceZone'=>$resl['serviceZone'],
+//         'totalPrice'=>$resl['totalPrice']
+//     ]);
+// });
+
+return view('admin.productTypes.index')->with('product',$resl);
         //     ->with('response', $response)->with('userInfo', User::getSlightInfo());
         // dd($result);
     
