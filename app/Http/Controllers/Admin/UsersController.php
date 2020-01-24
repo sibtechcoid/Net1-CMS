@@ -4,16 +4,10 @@ use Illuminate\Support\Facades\Cookie;
 use App\Mail\Register;
 use App\Models\User;
 use File;
-//use Hash;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
-//use Redirect;
-//use Sentinel;
-//use URL;
-//use View;
 use Yajra\DataTables\DataTables;
-//use Validator;
 use App\Mail\Restore;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Helpers\Curl;
@@ -21,26 +15,19 @@ use App\Helpers\ApiUrl;
 
 class UsersController extends Controller
 {
-    private $curl;
+    
     /**
      * Show a list of all the users.
      *
      * @return View
      */
-    // private $user_activation = false;
-    // protected $countries;
-
-    public function __construct()
-    {
-        $this->curl = new Curl();
-        // $this->countries = Country::all()->pluck('name', 'sortname')->toArray();
-    }
-
-
+    private $user_activation = false;
+   
     public function index()
     {
-        $user = new User();
-        $users = $user->getAllUsers();
+        // return view('admin.users.index', compact('users'));
+      
+        $users = new User();
         return view('admin.users.index')
             ->with('users', $users)
             ->with('userInfo', User::getSlightInfo());
