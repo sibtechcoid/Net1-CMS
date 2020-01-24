@@ -1,30 +1,30 @@
 <div class="card-body table-responsive-lg table-responsive-sm table-responsive-md">
-<table class="table table-striped table-bordered" id="banners-table" width="100%">
+<table class="table table-striped table-bordered" id="bannerNetones-table" width="100%">
     <thead>
      <tr>
         <th>Banner Name</th>
         <th>Banner Picture</th>
-        <th>Banner Uri</th>
+        <th>Banner Url</th>
         <th>Banner Order</th>
         <th >Action</th>
      </tr>
     </thead>
     <tbody>
-    @foreach($response['banners'] as $banner)
+    @foreach($bannerNetones as $bannerNetone)
         <tr>
-            <td>{!! $banner['banner_name'] !!}</td>
-            <td>{!! $banner['banner_picture'] !!}</td>
-            <td>{!! $banner['banner_url'] !!}</td>
-            <td>{!! $banner['banner_order'] !!}</td>
+            <td>{!! $bannerNetone->banner_name !!}</td>
+            <td>{!! $bannerNetone->banner_picture !!}</td>
+            <td>{!! $bannerNetone->banner_url !!}</td>
+            <td>{!! $bannerNetone->banner_order !!}</td>
             <td>
-                 <a href="{{ route('admin.banners.show', $banner['id'] ) }}">
-                     <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view banner"></i>
+                 <a href="{{ route('admin.bannerNetones.show', collect($bannerNetone)->first() ) }}">
+                     <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view bannerNetone"></i>
                  </a>
-                 <a href="{{ route('admin.banners.edit', $banner['id'] ) }}">
-                     <i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="edit banner"></i>
+                 <a href="{{ route('admin.bannerNetones.edit', collect($bannerNetone)->first() ) }}">
+                     <i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="edit bannerNetone"></i>
                  </a>
-                 <a href="{{ route('admin.banners.confirm-delete', $banner['id'] ) }}" data-toggle="modal" data-target="#delete_confirm" data-id="{{ route('admin.banners.delete', collect($banner)->first() ) }}">
-                     <i class="livicon" data-name="remove-alt" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete banner"></i>
+                 <a href="{{ route('admin.bannerNetones.confirm-delete', collect($bannerNetone)->first() ) }}" data-toggle="modal" data-target="#delete_confirm" data-id="{{ route('admin.bannerNetones.delete', collect($bannerNetone)->first() ) }}">
+                     <i class="livicon" data-name="remove-alt" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete bannerNetone"></i>
 
                  </a>
             </td>
@@ -60,16 +60,16 @@
  <script type="text/javascript" src="{{ asset('vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
 
     <script>
-        $('#banners-table').DataTable({
+        $('#bannerNetones-table').DataTable({
                       responsive: true,
                       pageLength: 10
                   });
-                  $('#banners-table').on( 'page.dt', function () {
+                  $('#bannerNetones-table').on( 'page.dt', function () {
                      setTimeout(function(){
                            $('.livicon').updateLivicon();
                      },500);
                   } );
-                  $('#banners-table').on( 'length.dt', function ( e, settings, len ) {
+                  $('#bannerNetones-table').on( 'length.dt', function ( e, settings, len ) {
                      setTimeout(function(){
                             $('.livicon').updateLivicon();
                      },500);

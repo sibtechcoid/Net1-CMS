@@ -39,51 +39,25 @@ Route::group(array('prefix' => 'admin/', 'middleware' => 'auth', 'namespace' => 
 });
 
 
-Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' => 'auth', 'as'=>'admin.productTypes.'), function () {
+// Route::group(array('prefix' => 'admin/','namespace' => 'Admin','middleware' => 'auth','as'=>'admin.banners.'), function () {
 
-    Route::get('productTypes', ['as'=> 'index', 'uses' => 'ProductTypeController@index']);
-    Route::post('productTypes', ['as'=> 'store', 'uses' => 'ProductTypeController@store']);
-    Route::get('productTypes/create', ['as'=> 'create', 'uses' => 'ProductTypeController@create']);
-    Route::put('productTypes/{productTypes}', ['as'=> 'update', 'uses' => 'ProductTypeController@update']);
-    Route::patch('productTypes/{productTypes}', ['as'=> 'update', 'uses' => 'ProductTypeController@update']);
-    Route::get('productTypes/{id}/delete', array('as' => 'delete', 'uses' => 'ProductTypeController@getDelete'));
-    Route::get('productTypes/{id}/confirm-delete', array('as' => 'confirm-delete', 'uses' => 'ProductTypeController@getModalDelete'));
-    Route::get('productTypes/{productTypes}', ['as'=> 'show', 'uses' => 'ProductTypeController@show']);
-    Route::get('productTypes/{productTypes}/edit', ['as'=> 'edit', 'uses' => 'ProductTypeController@edit']);
-
-});
-
-Route::group(array('prefix' => 'admin/','namespace' => 'Admin','middleware' => 'auth','as'=>'admin.banners.'), function () {
-
-    Route::get('banners', ['as'=> 'index', 'uses' => 'BannerController@index']);
-    Route::post('banners', ['as'=> 'store', 'uses' => 'BannerController@store']);
-    Route::get('banners/create', ['as'=> 'create', 'uses' => 'BannerController@create']);
-    Route::put('banners/{banners}', ['as'=> 'update', 'uses' => 'BannerController@update']);
-    Route::patch('banners/{banners}', ['as'=> 'update', 'uses' => 'BannerController@update']);
-    Route::get('banners/{id}/delete', array('as' => 'delete', 'uses' => 'BannerController@getDelete'));
-    Route::get('banners/{id}/confirm-delete', array('as' => 'confirm-delete', 'uses' => 'BannerController@getModalDelete'));
-    Route::get('banners/{banners}', ['as'=> 'show', 'uses' => 'BannerController@show']);
-    Route::get('banners/{banners}/edit', ['as'=> 'edit', 'uses' => 'BannerController@edit']);
-
-});
-
-// Route::group(array('prefix' => 'admin/zonePrice/','namespace' => 'Admin','middleware' => 'admin','as'=>'admin.zonePrice.'), function () {
-
-// Route::get('zonePrices', ['as'=> 'zonePrices.index', 'uses' => 'ZonePrices\ZonePriceController@index']);
-// Route::post('zonePrices', ['as'=> 'zonePrices.store', 'uses' => 'ZonePrices\ZonePriceController@store']);
-// Route::get('zonePrices/create', ['as'=> 'zonePrices.create', 'uses' => 'ZonePrices\ZonePriceController@create']);
-// Route::put('zonePrices/{zonePrices}', ['as'=> 'zonePrices.update', 'uses' => 'ZonePrices\ZonePriceController@update']);
-// Route::patch('zonePrices/{zonePrices}', ['as'=> 'zonePrices.update', 'uses' => 'ZonePrices\ZonePriceController@update']);
-// Route::get('zonePrices/{id}/delete', array('as' => 'zonePrices.delete', 'uses' => 'ZonePrices\ZonePriceController@getDelete'));
-// Route::get('zonePrices/{id}/confirm-delete', array('as' => 'zonePrices.confirm-delete', 'uses' => 'ZonePrices\ZonePriceController@getModalDelete'));
-// Route::get('zonePrices/{zonePrices}', ['as'=> 'zonePrices.show', 'uses' => 'ZonePrices\ZonePriceController@show']);
-// Route::get('zonePrices/{zonePrices}/edit', ['as'=> 'zonePrices.edit', 'uses' => 'ZonePrices\ZonePriceController@edit']);
+//     Route::get('banners', ['as'=> 'index', 'uses' => 'BannerController@index']);
+//     Route::post('banners', ['as'=> 'store', 'uses' => 'BannerController@store']);
+//     Route::get('banners/create', ['as'=> 'create', 'uses' => 'BannerController@create']);
+//     Route::put('banners/{banners}', ['as'=> 'update', 'uses' => 'BannerController@update']);
+//     Route::patch('banners/{banners}', ['as'=> 'update', 'uses' => 'BannerController@update']);
+//     Route::get('banners/{id}/delete', array('as' => 'delete', 'uses' => 'BannerController@getDelete'));
+//     Route::get('banners/{id}/confirm-delete', array('as' => 'confirm-delete', 'uses' => 'BannerController@getModalDelete'));
+//     Route::get('banners/{banners}', ['as'=> 'show', 'uses' => 'BannerController@show']);
+//     Route::get('banners/{banners}/edit', ['as'=> 'edit', 'uses' => 'BannerController@edit']);
 
 // });
 
 
 
 
+
+
 Route::group(array('prefix' => 'admin/testMaster/','namespace' => 'Admin','middleware' => 'admin','as'=>'admin.testMaster.'), function () {
 
 Route::get('testModels', ['as'=> 'testModels.index', 'uses' => 'Testmaster\TestModelController@index']);
@@ -98,17 +72,38 @@ Route::get('testModels/{testModels}/edit', ['as'=> 'testModels.edit', 'uses' => 
 
 });
 
+Route::group(array('middleware' => 'auth', 'prefix' => 'admin/' ,'namespace' => 'Admin','as'=>'admin.productNetOnes.'), function () {
 
-Route::group(array('prefix' => 'admin/testMaster/','namespace' => 'Admin','middleware' => 'admin','as'=>'admin.testMaster.'), function () {
+// Route::group(array('prefix' => 'admin/','namespace' => 'Admin','middleware' => 'auth','as'=>'admin.productNetOnes'), function () {
 
-Route::get('testModels', ['as'=> 'testModels.index', 'uses' => 'Testmaster\TestModelController@index']);
-Route::post('testModels', ['as'=> 'testModels.store', 'uses' => 'Testmaster\TestModelController@store']);
-Route::get('testModels/create', ['as'=> 'testModels.create', 'uses' => 'Testmaster\TestModelController@create']);
-Route::put('testModels/{testModels}', ['as'=> 'testModels.update', 'uses' => 'Testmaster\TestModelController@update']);
-Route::patch('testModels/{testModels}', ['as'=> 'testModels.update', 'uses' => 'Testmaster\TestModelController@update']);
-Route::get('testModels/{id}/delete', array('as' => 'testModels.delete', 'uses' => 'Testmaster\TestModelController@getDelete'));
-Route::get('testModels/{id}/confirm-delete', array('as' => 'testModels.confirm-delete', 'uses' => 'Testmaster\TestModelController@getModalDelete'));
-Route::get('testModels/{testModels}', ['as'=> 'testModels.show', 'uses' => 'Testmaster\TestModelController@show']);
-Route::get('testModels/{testModels}/edit', ['as'=> 'testModels.edit', 'uses' => 'Testmaster\TestModelController@edit']);
+Route::get('productNetOnes', ['as'=> 'index', 'uses' => 'ProductNetOneController@index']);
+Route::post('productNetOnes', ['as'=> 'store', 'uses' => 'ProductNetOneController@store']);
+Route::post('productNetOnes', ['as'=> 'reload', 'uses' => 'ProductNetOneController@reload']);
+Route::get('productNetOnes/reload', ['as'=> 'reload', 'uses' => 'ProductNetOneController@reload']);
+Route::get('productNetOnes/create', ['as'=> 'create', 'uses' => 'ProductNetOneController@create']);
+Route::put('productNetOnes/{productNetOnes}', ['as'=> 'update', 'uses' => 'ProductNetOneController@update']);
+Route::patch('productNetOnes/{productNetOnes}', ['as'=> 'update', 'uses' => 'ProductNetOneController@update']);
+Route::get('productNetOnes/{id}/delete', array('as' => 'delete', 'uses' => 'ProductNetOneController@getDelete'));
+Route::get('productNetOnes/{id}/confirm-delete', array('as' => 'confirm-delete', 'uses' => 'ProductNetOneController@getModalDelete'));
+Route::get('productNetOnes/{productNetOnes}', ['as'=> 'show', 'uses' => 'ProductNetOneController@show']);
+Route::get('productNetOnes/{productNetOnes}/edit', ['as'=> 'edit', 'uses' => 'ProductNetOneController@edit']);
+
+});
+
+
+
+
+Route::group(array('middleware' => 'auth', 'prefix' => 'admin/' ,'namespace' => 'Admin','as'=>'admin.'), function () {
+// Route::group(array('prefix' => 'admin/','namespace' => 'Admin','middleware' => 'admin','as'=>'admin.bannerNetones.'), function () {
+
+Route::get('bannerNetones', ['as'=> 'bannerNetones.index', 'uses' => 'BannerNetoneController@index']);
+Route::post('bannerNetones', ['as'=> 'bannerNetones.store', 'uses' => 'BannerNetoneController@store']);
+Route::get('bannerNetones/create', ['as'=> 'bannerNetones.create', 'uses' => 'BannerNetoneController@create']);
+Route::put('bannerNetones/{bannerNetones}', ['as'=> 'bannerNetones.update', 'uses' => 'BannerNetoneController@update']);
+Route::patch('bannerNetones/{bannerNetones}', ['as'=> 'bannerNetones.update', 'uses' => 'BannerNetoneController@update']);
+Route::get('bannerNetones/{id}/delete', array('as' => 'bannerNetones.delete', 'uses' => 'BannerNetoneController@getDelete'));
+Route::get('bannerNetones/{id}/confirm-delete', array('as' => 'bannerNetones.confirm-delete', 'uses' => 'BannerNetoneController@getModalDelete'));
+Route::get('bannerNetones/{bannerNetones}', ['as'=> 'bannerNetones.show', 'uses' => 'BannerNetoneController@show']);
+Route::get('bannerNetones/{bannerNetones}/edit', ['as'=> 'bannerNetones.edit', 'uses' => 'BannerNetoneController@edit']);
 
 });
