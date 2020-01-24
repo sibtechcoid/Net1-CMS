@@ -27,7 +27,7 @@
 <table class="table table-striped table-bordered" id="products-table" width="100%">
     <thead>
      <tr>
-{{--        <th style="width: 16px;">Show Zone Prices</th>--}}
+        <th>Action</th>
         <th>Offer ID</th>
         <th style="width: 16px;">Offer Name</th>
         <th>Display Name</th>
@@ -37,12 +37,23 @@
         <th>service Zone</th>
         <th>Validity Date</th>
         <th>Total Price</th>
-        <th>Action</th>
      </tr>
     </thead>
     <tbody>
         @foreach ($products as $item)
         <tr>
+            {{-- <td>
+                 <a href="{{ route('admin.product.show', collect($show ?? '')->first() ) }}">
+                     <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view productType"></i>
+                 </a>
+                 <a href="{{ route('admin.product.edit', collect($show ?? '')->first() ) }}">
+                     <i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="edit productType"></i>
+                 </a>
+                 <a href="{{ route('admin.product.confirm-delete', collect($show ?? '')->first() ) }}" data-toggle="modal" data-target="#delete_confirm" data-id="{{ route('admin.productTypes.delete', collect($productType)->first() ) }}">
+                     <i class="livicon" data-name="remove-alt" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete productType"></i>
+
+                 </a>
+            </td> --}}
            <td>{{ $item->offer_id }}</td>
            <td>{{ $item->offer_name }}</td>
            <td>{{ $item->display_name }}</td>
@@ -63,16 +74,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                                <h4 class="modal-title" id="deleteLabel">Delete Item</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            </div>
-                            <div class="modal-body">
-                                Are you sure to delete this Item? This operation is irreversible.
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <a  type="button" class="btn btn-danger Remove_square">Delete</a>
-                            </div>
+                <h4 class="modal-title" id="deleteLabel">Delete Item</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete this Item? This operation is irreversible.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a  type="button" class="btn btn-danger Remove_square">Delete</a>
+            </div>
             </div>
         </div>
     </div>

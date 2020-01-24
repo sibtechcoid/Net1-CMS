@@ -74,6 +74,10 @@ Route::group(
     function () {
         //products
         Route::get('admin.products','ProductController@index');
+        Route::get('admin.products.show','ProductController@show');
+        Route::get('admin.products.edit','ProductController@edit');
+        Route::get('admin.products.confirm-delete','ProductController@confirm-delete');
+        Route::get('admin.products.delete','ProductController@delete');
          Route::get('admin/products/store','ProductController@store');
         // GUI Crud Generator
         Route::get('generator_builder', 'JoshController@builder')->name('generator_builder');
@@ -125,7 +129,7 @@ Route::group(
                 Route::get('{user}/delete', 'UsersController@destroy')->name('users.delete');
                 Route::get('{user}/confirm-delete', 'UsersController@getModalDelete')->name('users.confirm-delete');
                 Route::get('{user}/restore', 'UsersController@getRestore')->name('restore.user');
-                       Route::post('{user}/passwordreset', 'UsersController@passwordreset')->name('passwordreset');
+                Route::post('{user}/passwordreset', 'UsersController@passwordreset')->name('passwordreset');
                 Route::post('passwordreset', 'UsersController@passwordreset')->name('passwordreset');
             }
         );

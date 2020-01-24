@@ -66,13 +66,12 @@ class ProductController extends Controller
         ]);
         $response = $request->getBody()->getContents();
         $result = json_decode($response,true);
-        $p=$result['responseObject'];
+        $p = $result['responseObject'];
         foreach($p as $mydata)
         {
-            if (  isset($mydata['description'])== null){
-                $e=$mydata['description']='null';
-        }else{
-                      
+            if ( isset($mydata['description'])== null){
+                $e = $mydata['description']='null';
+            }else{
                 Product::insert([
                     'offer_id' =>$mydata['offerID'],
                     'offer_name'=>$mydata['offerName'],
@@ -83,10 +82,10 @@ class ProductController extends Controller
                     'service_zone'=>$mydata['serviceZone'],
                     // 'validity_date'=>$mydata['serviceZone'],
                     'total_price'=>$mydata['totalPrice']
-            ]);}
-            
+                ]);
             }
-            return redirect('admin/products');
+        }
+        return redirect('admin/products');
     }
 
 //     /**
@@ -137,7 +136,7 @@ class ProductController extends Controller
         //     return redirect()->route('products.index');
         // }
 
-        return view('admin.products.edit')->with('response', $response)->with('userInfo', User::getSlightInfo());
+        return view('admin.products.edit');//->with('response', $response)->with('userInfo', User::getSlightInfo());
     }
 
     /**

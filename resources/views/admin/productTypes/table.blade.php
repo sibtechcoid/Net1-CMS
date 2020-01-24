@@ -14,8 +14,6 @@
     <tbody>
     
     @foreach ($productlist as $mydata )
-        
-  
         <tr>
             <td>{{ $mydata->offerID}}</td>
             {{-- <td>{{ $mydata['offerName']}}</td> --}}

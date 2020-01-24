@@ -65,7 +65,6 @@ Products
                         </form>
                     </div>
                     @include('admin.products.table')
-
                 </div>
             </div>
         </div>
