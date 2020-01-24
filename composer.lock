@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "eca8935900b7cd3b711f14ddc992dc57",
@@ -1622,8 +1622,7 @@
             "dist": {
                 "type": "path",
                 "url": "./infyomlabs/core-templates",
-                "reference": "e2d4e6428bd70389aa7c52609fd3f25228e4e394",
-                "shasum": null
+                "reference": "bf4791a11b4141429f6db369f1de6354420372ee"
             },
             "require": {
                 "illuminate/support": "~6.0",
@@ -1658,8 +1657,7 @@
             "dist": {
                 "type": "path",
                 "url": "./infyomlabs/generator-builder",
-                "reference": "d2b3a34d4832d50fce90deb3c748c9f9c60ae4d5",
-                "shasum": null
+                "reference": "b8937a8d221942b78fd1c40bc99e04d3143c68c7"
             },
             "require": {
                 "illuminate/support": "~6.0",
@@ -1698,8 +1696,7 @@
             "dist": {
                 "type": "path",
                 "url": "./infyomlabs/laravel-generator",
-                "reference": "15a820deb221a76d70d67796180af88616cc9ff2",
-                "shasum": null
+                "reference": "15a820deb221a76d70d67796180af88616cc9ff2"
             },
             "require": {
                 "illuminate/support": "~6.0",
@@ -6750,16 +6747,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "1.15.0",
+            "version": "1.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "c3cb2e85cf65917c50e519d64d879c5634336715"
+                "reference": "37f094775814b68d0c6cc8b8ff3c3be243f20725"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/c3cb2e85cf65917c50e519d64d879c5634336715",
-                "reference": "c3cb2e85cf65917c50e519d64d879c5634336715",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/37f094775814b68d0c6cc8b8ff3c3be243f20725",
+                "reference": "37f094775814b68d0c6cc8b8ff3c3be243f20725",
                 "shasum": ""
             },
             "require": {
@@ -6786,7 +6783,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "v2.x-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -6817,7 +6814,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2020-01-21T07:56:45+00:00"
+            "time": "2020-01-21T17:46:02+00:00"
         },
         {
             "name": "facade/ignition-contracts",

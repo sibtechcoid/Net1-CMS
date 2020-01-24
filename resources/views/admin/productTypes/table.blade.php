@@ -17,7 +17,7 @@
         
   
         <tr>
-            <td>{{ $mydata['offerID']}}</td>
+            <td>{{ $mydata->offerID}}</td>
             {{-- <td>{{ $mydata['offerName']}}</td> --}}
             {{-- <td>
                  <a href="{{ route('admin.productTypes.show', collect($show ?? '')->first() ) }}">

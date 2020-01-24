@@ -28,54 +28,20 @@
     <thead>
      <tr>
 {{--        <th style="width: 16px;">Show Zone Prices</th>--}}
-        <th>Add Zone Price</th>
-        <th style="width: 16px;">Product Id</th>
-        <th>Plan</th>
-        <th>Product Type</th>
-        <th>Product Name</th>
-        <th>Product Speed</th>
-        <th>Product Description</th>
+        <th>Offer ID</th>
+        <th style="width: 16px;">Offer Name</th>
+        <th>Display Name</th>
+        <th>Description</th>
+        <th>charging Type</th>
+        <th>offer Type</th>
+        <th>service Zone</th>
+        <th>totalPrice</th>
         <th>Product Expiry In Days</th>
-        <th>Publish</th>
         <th>Action</th>
      </tr>
     </thead>
     <tbody>
-    @foreach($response['products'] as $product)
 
-        @if (strtolower($product['plan']) == "prepaid")
-        <tr class="tr-color-prepaid">
-        @else
-        <tr class="tr-color-postpaid" data-toggle="modal" data-target="#exampleModalLong">
-        @endif
-            <td class="align-center">
-                <button type="button" class="btn btn-outline-light btn_zonePriceModal" data-backdrop="static" data-toggle="modal" data-target="#zonePriceModal" value="{{$product['id']}}"><i class="fas fa-plus-circle"></i></button>
-            </td>
-            <td>{!! $product['id'] !!}</td>
-            <td>{!! $product['plan'] !!}</td>
-            <td>{!! $product['product_type'] !!}</td>
-            <td>{!! $product['product_name'] !!}</td>
-            <td>{!! $product['product_speed'] !!} Mbps</td>
-            <td>{!! $product['product_description'] !!}</td>
-            <td>{!! $product['product_expiry_in_days'] !!}</td>
-
-
-<td>@if($product['publish'] =='1') <span class="badge badge-success" style="font-size: 14px;">true</span> @else <span class="badge badge-danger" style="font-size: 14px;">false</span> @endif</td>
-
-            <td style="background-color: white;">
-
-                <a href="{{ route('admin.products.show', collect($product)->first() ) }}">
-                    <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view product"></i>
-                </a>
-                <a href="{{ route('admin.products.edit', collect($product)->first() ) }}">
-                    <i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="edit product"></i>
-                </a>
-                <a href="{{ route('admin.products.confirm-delete', collect($product)->first() ) }}" data-toggle="modal" data-target="#delete_confirm" data-id="{{ route('admin.products.delete', collect($product)->first() ) }}">
-                    <i class="livicon" data-name="remove-alt" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete product"></i>
-                </a>
-            </td>
-        </tr>
-    @endforeach
     </tbody>
 </table>
 </div>

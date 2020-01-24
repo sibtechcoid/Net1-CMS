@@ -40,7 +40,7 @@ Products
                         Products List
                     </h4>
                     <div class="float-right">
-                        <a href="{{ route('admin.products.create') }}" class="btn btn-sm btn-default"><span
+                        <a href="" class="btn btn-sm btn-default"><span
                                 class="fa fa-plus"></span> @lang('button.create')</a>
                     </div>
                 </div>

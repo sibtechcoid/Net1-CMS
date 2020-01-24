@@ -13,15 +13,17 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Products', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('plan')->nullable();
-            $table->string('product_type')->nullable();
-            $table->string('product_name')->nullable();
-            $table->integer('product_speed')->nullable();
-            $table->text('product_description')->nullable();
-            $table->smallInteger('product_expiry_in_days')->nullable();
-            $table->boolean('publish')->default(0);
+        Schema::create('product', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('offer_id', 100);
+            $table->string('offer_name', 100);
+            $table->string('display_name', 100);//for mobile
+            $table->string('description', 100);
+            $table->string('charging_type', 100);
+            $table->string('offer_type', 100);
+            $table->string('service_zone', 100);
+            $table->bigInteger('total_price');
+            $table->dateTime('validity_date');//time for expire mobile user
             $table->timestamps();
         });
     }
