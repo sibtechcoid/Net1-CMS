@@ -13,20 +13,17 @@ use App\Models\Admin\Product;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use \App\Http\Controllers\ControllerName;
 // use App\Helpers\Curl;
 // use App\Helpers\ApiUrl;
 
 
 class ProductController extends Controller
 {
-public function index()
+    public function index()
     {
-       
-        // ganti sama product list
-
-    //     $users = DB::select('select * from student');
-    //     return view('stud_view',['users'=>$users]);
-    // return view('admin.products.index'); 
+        $products = \DB::select('select * from product');
+        return view('admin.products.index',['products'=>$products]); 
     }
 
     /**
@@ -51,7 +48,7 @@ public function index()
      *
      * @return
      */
-    public function store(Request $request)
+    public function store()
     {
         $data= [
             'data' => [''],
@@ -69,18 +66,14 @@ public function index()
         ]);
         $response = $request->getBody()->getContents();
         $result = json_decode($response,true);
-         $p=$result['responseObject'];
-        
+        $p=$result['responseObject'];
         foreach($p as $mydata)
-        
-            {
-                
-             if (  isset($mydata['description'])== null){
-            
-            $e=$mydata['descripstion']='null';
+        {
+            if (  isset($mydata['description'])== null){
+                $e=$mydata['description']='null';
         }else{
                       
-                 Product::insert([
+                Product::insert([
                     'offer_id' =>$mydata['offerID'],
                     'offer_name'=>$mydata['offerName'],
                     'display_name'=>$mydata['offerName'],
@@ -90,10 +83,10 @@ public function index()
                     'service_zone'=>$mydata['serviceZone'],
                     // 'validity_date'=>$mydata['serviceZone'],
                     'total_price'=>$mydata['totalPrice']
-                ]);}
+            ]);}
             
             }
-            return view('admin.products.index',['products'=>$mydata]); 
+            return redirect('admin/products');
     }
 
 //     /**
@@ -105,8 +98,8 @@ public function index()
 //      */
     public function show()
     {
-        $product = \DB::select('select * from product');
-        return view('admin.products.table',['product'=>$product]);
+        $products = \DB::select('select * from product');
+        return view('admin.products.index',['products'=>$products]);
         // $this->curl->setAccessToken(Cookie::get('authToken'));
         // $res = $this->curl->httpGet(ApiUrl::$url.'products/'. $id);
         // $res =  json_decode($res, true);

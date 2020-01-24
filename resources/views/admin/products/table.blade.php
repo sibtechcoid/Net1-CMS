@@ -35,16 +35,23 @@
         <th>charging Type</th>
         <th>offer Type</th>
         <th>service Zone</th>
-        <th>totalPrice</th>
-        <th>Product Expiry In Days</th>
+        <th>Validity Date</th>
+        <th>Total Price</th>
         <th>Action</th>
      </tr>
     </thead>
     <tbody>
-        @foreach ($product as $items)
+        @foreach ($products as $item)
         <tr>
-           <td>{{ $items['offer_id'] }}</td>
-           {{-- <td>{{ $user->offer_name }}</td> --}}
+           <td>{{ $item->offer_id }}</td>
+           <td>{{ $item->offer_name }}</td>
+           <td>{{ $item->display_name }}</td>
+           <td>{{ $item->description }}</td>
+           <td>{{ $item->charging_type }}</td>
+           <td>{{ $item->offer_type }}</td>
+           <td>{{ $item->service_zone }}</td>
+           <td>{{ $item->validity_date }}</td>
+           <td>{{ $item->total_price }}</td>
         </tr>
         @endforeach
     </tbody>
@@ -52,7 +59,7 @@
 </div>
 @section('footer_scripts')
 
-    <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="user_delete_confirm_title" aria-hidden="true">
+    <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="item_delete_confirm_title" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">

@@ -44,7 +44,8 @@ Products
                                 class="fa fa-plus"></span> @lang('button.create')</a>
                     </div> --}}
                     <div class="input-group-prepend">
-                        <button class="btn btn-outline-dark" type="submit">reload</button>
+                    <button class="btn btn-outline-dark" type="submit">reload</button>
+                    {{-- <a href="{{ControllerName::store}}"> --}}
                     </div>
                 </div>
                 <br />
