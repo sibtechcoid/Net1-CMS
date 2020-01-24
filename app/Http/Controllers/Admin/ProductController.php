@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Excel\ProductsImport;
 use Illuminate\Support\Facades\Cookie;
 use GuzzleHttp\Client;
-
+// use App\Http\Controllers\Admin\DB;
 use App\Models\Admin\Product;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
@@ -24,47 +24,9 @@ public function index()
        
         // ganti sama product list
 
-$data= [
-    'data' => [''],
-];
-$client = new Client([
-    'auth' => [
-        'admin',
-         'admin'],
-    'header' => [
-        'content-type' => 'application/json;charset=UTF-8'],
-       
-    ]);
-$request = $client->request('POST','http://10.211.1.21:8000/v1/uat/getProductList',[
-    'json' => $data,
-]);
-$response = $request->getBody()->getContents();
-$result = json_decode($response,true);
- $p=$result['responseObject'];
-
-foreach($p as $mydata)
-
-    {
-        
-     if (  isset($mydata['description'])== null){
-    
-    $e=$mydata['descripstion']='null';
-}else{
-              
-         Product::insert([
-            'offer_id' =>$mydata['offerID'],
-            'offer_name'=>$mydata['offerName'],
-            'display_name'=>$mydata['offerName'],
-            'description'=>$e,
-            'charging_type'=>$mydata['chargingType'],
-            'offer_type'=>$mydata['offerType'],
-            'service_zone'=>$mydata['serviceZone'],
-            // 'validity_date'=>$mydata['serviceZone'],
-            'total_price'=>$mydata['totalPrice']
-        ]);}
-    
-    }
-    return view('admin.products.index',['products'=>$mydata]); 
+    //     $users = DB::select('select * from student');
+    //     return view('stud_view',['users'=>$users]);
+    // return view('admin.products.index'); 
     }
 
     /**
@@ -91,107 +53,47 @@ foreach($p as $mydata)
      */
     public function store(Request $request)
     {
-// //        var_dump($request->all());
-//         // $fields = $request->validate([
-//         //     'plan' => 'required|regex:/^[a-zA-Z]+$/u',
-//         //     'product_type_id' => 'required',
-//         //     'product_name' => 'required',
-//         //     'product_speed' => 'required',
-//         //     'product_description' => 'required',
-//         //     'product_expiry_in_days' => 'required|numeric',
-//         //     'zone_price_status' => 'required|boolean',
-//         //     'product_price' => 'nullable|numeric',
-//         //     'zone_prices.*' => 'nullable'
-//         // ]);
-//         // dd($request->all());exit;
-// //        var_dump($fields);exit;
-//         // $fields['insert_type'] = 'insert';
-//         // $this->curl->setAccessToken(Cookie::get('authToken'));
-//         // $response = $this->curl->httpPost(ApiUrl::$url.'products', $fields);
-//         // $response = json_decode($response, true);
-// //        var_dump($response);exit;
-//         if(is_array($response)) {
-//             if(array_key_exists('errors', $response)) {
-//                 $message = "";
-//                 foreach($response['errors'] as $errorKey => $errorValue) {
-//                     $message .= $errorValue[0] ."<br>";
-//                 }
-
-//                 return back()->withInput()->withErrors(['error' => $message]);
-//             }
-//             else if(array_key_exists('code', $response) && $response['code']==200) {
-//                 // echo $response['access_token'];
-//                 return redirect()->route('admin.products.index');
-//             }
-//         }
-//         else if($response == 7) {
-//             return back()->withInput();
-//         }
-
-
-//         return redirect()->route('admin.products.index')->with('response', $response);
-//     }
-
-//     public function createZonePrice(Request $request)
-//     {
-//         $fields = $request->validate([
-//             'product_id' => 'required',
-//             'zone_id' => 'required',
-//             'zone_price' => 'required|numeric'
-//         ]);
-
-//         $this->curl->setAccessToken(Cookie::get('authToken'));
-//         $response = $this->curl->httpPost(ApiUrl::$url.'zonePrices', $fields);
-//         $response = json_decode($response, true);
-//         if(is_array($response)) {
-//             if(array_key_exists('errors', $response)) {
-//                 $message = "";
-//                 foreach($response['errors'] as $errorKey => $errorValue) {
-//                     $message .= $errorValue[0] ."<br>";
-//                 }
-
-//                 return response()->json(['errors' => $message]);
-//             }
-//             else if(array_key_exists('code', $response) && $response['code']==200) {
-//                 return response()->json(['code' => 200, 'message' => 'success']);
-//             }
-//         }
-//         else if($response == 7) {
-//             return response(['code' => 500, 'message' => 'server down']);
-//         }
-
-//         return response()->json(['code' => 200,'message' => 'wrong ending']);
-//     }
-
-//     public function uploadProductExcel(Request $request)
-//     {
-//         $request->validate([
-//             'productExcel' => 'required'
-//         ]);
-//         try {
-// //            $pathTemp = $request->file('productExcel')->store('temp');
-// //            $path = storage_path('app').'/'.$pathTemp;
-//             echo "<h2>Excel File Name: <font style='font-weight:normal; font-size: 17px;'>'".$request->file('productExcel')->getClientOriginalName()."'</font></h2>";
-//             echo "
-//             <style>
-//                 table {
-//                   border-collapse: collapse;
-//                 }
-
-//                 table, th, td {
-//                   border: 1px solid black;
-//                 }
-//             </style>";
-
-//             echo "<table>";
-//             $data = Excel::import(new ProductsImport, $request->file('productExcel'));
-//             echo "</table>";
-// //            var_dump($data);
-// //            exit;
-//         }
-//         catch (\Exception $exception) {
-//             echo $exception;
-//         }
+        $data= [
+            'data' => [''],
+        ];
+        $client = new Client([
+            'auth' => [
+                'admin',
+                 'admin'],
+            'header' => [
+                'content-type' => 'application/json;charset=UTF-8'],
+               
+            ]);
+        $request = $client->request('POST','http://10.211.1.21:8000/v1/uat/getProductList',[
+            'json' => $data,
+        ]);
+        $response = $request->getBody()->getContents();
+        $result = json_decode($response,true);
+         $p=$result['responseObject'];
+        
+        foreach($p as $mydata)
+        
+            {
+                
+             if (  isset($mydata['description'])== null){
+            
+            $e=$mydata['descripstion']='null';
+        }else{
+                      
+                 Product::insert([
+                    'offer_id' =>$mydata['offerID'],
+                    'offer_name'=>$mydata['offerName'],
+                    'display_name'=>$mydata['offerName'],
+                    'description'=>$e,
+                    'charging_type'=>$mydata['chargingType'],
+                    'offer_type'=>$mydata['offerType'],
+                    'service_zone'=>$mydata['serviceZone'],
+                    // 'validity_date'=>$mydata['serviceZone'],
+                    'total_price'=>$mydata['totalPrice']
+                ]);}
+            
+            }
+            return view('admin.products.index',['products'=>$mydata]); 
     }
 
 //     /**
@@ -201,10 +103,10 @@ foreach($p as $mydata)
 //      *
 //      * @return
 //      */
-    public function show($id)
+    public function show()
     {
-        $product = DB::select('select * from product');
-        return view('admin.products.show',['product'=>$product]);
+        $product = \DB::select('select * from product');
+        return view('admin.products.table',['product'=>$product]);
         // $this->curl->setAccessToken(Cookie::get('authToken'));
         // $res = $this->curl->httpGet(ApiUrl::$url.'products/'. $id);
         // $res =  json_decode($res, true);

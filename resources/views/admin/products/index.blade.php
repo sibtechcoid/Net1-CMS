@@ -39,9 +39,12 @@ Products
                             data-loop="true" data-c="#fff" data-hc="white"></i>
                         Products List
                     </h4>
-                    <div class="float-right">
+                    {{-- <div class="float-right">
                         <a href="" class="btn btn-sm btn-default"><span
                                 class="fa fa-plus"></span> @lang('button.create')</a>
+                    </div> --}}
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-dark" type="submit">reload</button>
                     </div>
                 </div>
                 <br />

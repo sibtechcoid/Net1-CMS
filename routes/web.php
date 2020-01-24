@@ -73,7 +73,8 @@ Route::group(
     ['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'admin.'],
     function () {
         //products
-        Route::get('admin.products','ProductController@index');
+        //Route::get('admin.products','ProductController@index');
+        Route::get('admin.products','ProductController@show');
         // GUI Crud Generator
         Route::get('generator_builder', 'JoshController@builder')->name('generator_builder');
         Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate');

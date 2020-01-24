@@ -348,71 +348,7 @@ Home
                     </div>
                 </div>
             </div>
-            <!--Panel-group Start -->
-            <!--<div class="card-group" id="accordion">-->
-            <!--&lt;!&ndash; Panel Panel-default Start &ndash;&gt;-->
-            <!--<div class="panel card-default">-->
-            <!--&lt;!&ndash; Panel-heading Start &ndash;&gt;-->
-            <!--<div class="card-header text_bg">-->
-            <!--<h4 class="card-title">-->
-            <!--<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">-->
-            <!--&lt;!&ndash;<span class=" glyphicon glyphicon-minus success"></span>&ndash;&gt;-->
-            <!--<i class="fa fa-plus success"></i>-->
-            <!--<span class="success">Why Choose Us</span></a>-->
-            <!--</h4>-->
-            <!--</div>-->
-            <!--&lt;!&ndash; //Panel-heading End &ndash;&gt;-->
-            <!--&lt;!&ndash; Collapseone Start &ndash;&gt;-->
-            <!--<div id="collapseOne" class="card-collapse collapse in">-->
-            <!--<div class="card-body">-->
-            <!--<p>In 1972 a crack commando unit was sent to prison by a military court for a crime they didn't commit. These men promptly escaped from a maximum security stockade to the Los Angeles underground. Believe it or not I'm walking on air. I never thought I could feel so free. Flying away on a wing and a prayer. Who could it be? Believe it or not its just me. Come and knock on our door. We've been waiting for you. Where the kisses are hers and hers and his. Three's company too. Flying away on a wing and a prayer. Who could it be? Believe it or not its just me. Here's the story of a man named Brady who was busy with three boys of his own. One two three four five six seven eight Sclemeel schlemazel hasenfeffer incorporated? Till the one day when the lady met this fellow and they knew it was much more than a hunch. Baby if you've ever wondered.-->
-            <!--</p>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--&lt;!&ndash; Collapseone End &ndash;&gt;-->
-            <!--</div>-->
-            <!--&lt;!&ndash; //Panel Panel-default End &ndash;&gt;-->
-            <!--<div class="panel card-default">-->
-            <!--<div class="card-header text_bg">-->
-            <!--<h4 class="card-title">-->
-            <!--<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">-->
-            <!--<i class="fa fa-plus success"></i>-->
-            <!--<span class="success">Why Choose Us</span>-->
-            <!--</a>-->
-            <!--</h4>-->
-            <!--</div>-->
-            <!--<div id="collapseTwo" class="card-collapse collapse">-->
-            <!--<div class="card-body">-->
-            <!--<p>-->
-            <!--In 1972 a crack commando unit was sent to prison by a military court for a crime they didn't commit. These men promptly escaped from a maximum security stockade to the Los Angeles underground. Believe it or not I'm walking on air. I never thought I could feel so free. Flying away on a wing and a prayer. Who could it be? Believe it or not its just me. Come and knock on our door. We've been waiting for you. Where the kisses are hers and hers and his. Three's company too. Flying away on a wing and a prayer. Who could it be? Believe it or not its just me. Here's the story of a man named Brady who was busy with three boys of his own. One two three four five six seven eight Sclemeel schlemazel hasenfeffer incorporated? Till the one day when the lady met this fellow and they knew it was much more than a hunch. Baby if you've ever wondered.-->
-            <!--</p>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--<div class="panel card-default">-->
-            <!--<div class="card-header text_bg">-->
-            <!--<h4 class="card-title">-->
-            <!--<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">-->
-            <!--<i class="fa fa-plus success"></i>-->
-            <!--<span class="success">Why Choose Us</span></a>-->
-            <!--</h4>-->
-            <!--</div>-->
-            <!--<div id="collapseThree" class="card-collapse collapse">-->
-            <!--<div class="card-body">-->
-            <!--<p>-->
-            <!--In 1972 a crack commando unit was sent to prison by a military court for a crime they didn't commit. These men promptly escaped from a maximum security stockade to the Los Angeles underground. Believe it or not I'm walking on air. I never thought I could feel so free. Flying away on a wing and a prayer. Who could it be? Believe it or not its just me. Come and knock on our door. We've been waiting for you. Where the kisses are hers and hers and his. Three's company too. Flying away on a wing and a prayer. Who could it be? Believe it or not its just me. Here's the story of a man named Brady who was busy with three boys of his own. One two three four five six seven eight Sclemeel schlemazel hasenfeffer incorporated? Till the one day when the lady met this fellow and they knew it was much more than a hunch. Baby if you've ever wondered.-->
-            <!--</p>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--&lt;!&ndash; //Panle-group End &ndash;&gt;-->
-            <!--</div>-->
-        </div>
-    </div>
-</div>
-<!-- //Accordions Section End -->
-<!-- Our Team Start -->
+           
 <div class="container">
     <div class="row text-center">
         <div class="col-12 my-3">

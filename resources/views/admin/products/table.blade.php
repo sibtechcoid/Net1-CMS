@@ -41,7 +41,12 @@
      </tr>
     </thead>
     <tbody>
-
+        @foreach ($product as $items)
+        <tr>
+           <td>{{ $items['offer_id'] }}</td>
+           {{-- <td>{{ $user->offer_name }}</td> --}}
+        </tr>
+        @endforeach
     </tbody>
 </table>
 </div>
