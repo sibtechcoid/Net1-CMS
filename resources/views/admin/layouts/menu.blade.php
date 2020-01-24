@@ -18,7 +18,7 @@
     <a href="{!! route('admin.productNetOnes.index') !!}">
     <i class="livicon" data-c="#EF6F6C" data-hc="#EF6F6C" data-name="list" data-size="18"
                data-loop="true"></i>
-               ProductNetOnes
+               ProductNet1
     </a>
 </li>
 
@@ -28,7 +28,7 @@
     <a href="{!! route('admin.bannerNetones.index') !!}">
     <i class="livicon" data-c="#31B0D5" data-hc="#31B0D5" data-name="desktop" data-size="18"
                data-loop="true"></i>
-               BannerNetones
+               BannerNet1
     </a>
 </li>
 
