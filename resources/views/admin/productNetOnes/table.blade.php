@@ -30,13 +30,13 @@
                  <a href="{{ route('admin.productNetOnes.show', collect($productNetOne)->first() ) }}">
                      <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view productNetOne"></i>
                  </a>
-                 <a href="{{ route('admin.productNetOnes.edit', collect($productNetOne)->first() ) }}">
+                 {{-- <a href="{{ route('admin.productNetOnes.edit', collect($productNetOne)->first() ) }}">
                      <i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="edit productNetOne"></i>
                  </a>
                  <a href="{{ route('admin.productNetOnes.confirm-delete', collect($productNetOne)->first() ) }}" data-toggle="modal" data-target="#delete_confirm" data-id="{{ route('admin.productNetOnes.delete', collect($productNetOne)->first() ) }}">
                      <i class="livicon" data-name="remove-alt" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete productNetOne"></i>
 
-                 </a>
+                 </a> --}}
             </td>
         </tr>
     @endforeach
