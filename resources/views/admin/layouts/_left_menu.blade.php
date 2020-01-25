@@ -3,16 +3,10 @@
     <li {!! (Request::is('admin') ? 'class="active"' : '' ) !!}>
         <a href="{{ route('admin.dashboard') }}">
             <i class="livicon" data-name="dashboard" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
-            <span class="title">Dashboard 1</span>
+            <span class="title">Dashboard Net1</span>
         </a>
     </li>
-    {{-- <li {!! (Request::is('admin/index1') ? 'class="active"' : '' ) !!}>
-        <a href="{{  URL::to('admin/index1') }}">
-            <i class="livicon" data-name="dashboard" data-size="18" data-c="#EF6F6C" data-hc="#EF6F6C" data-loop="true"></i>
-            Dashboard 2
-        </a>
-    </li> --}}
-
+ 
     <li {!! (Request::is('admin/generator_builder') ? 'class="active"' : '' ) !!}>
         <a href="{{ URL('admin/generator_builder') }}">
             <i class="livicon" data-name="shield" data-size="18" data-c="#F89A14" data-hc="#F89A14" data-loop="true"></i>
@@ -23,7 +17,7 @@
     <li {!! (Request::is('admin/users') || Request::is('admin/bulk_import_users') || Request::is('admin/users/create') || Request::is('admin/user_profile') || Request::is('admin/users/*') || Request::is('admin/deleted_users') ? 'class="active"' : '' ) !!}>
         <a href="#">
             <i class="livicon" data-name="user" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
-            <span class="title">Users</span>
+            <span class="title">Users Net1</span>
             <span class="fa arrow"></span>
         </a>
         <ul class="sub-menu">

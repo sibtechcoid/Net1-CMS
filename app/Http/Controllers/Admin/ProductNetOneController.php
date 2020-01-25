@@ -160,32 +160,38 @@ class ProductNetOneController extends InfyOmBaseController
 
        }
 
-       public function reload(){
+       public function reload()
+       {
 
-        $data= [
-            'data' => [''],
-        ];
+            $data= [
+                'data' => [''],
+            ];
 
         $client = new Client([
-            'auth' => [
-                'admin',
-                 'admin'],
+
+                'auth' => [
+                    'admin',
+                    'admin'
+                    ],
+
             'header' => [
                 'content-type' => 'application/json;charset=UTF-8'],
                 ]);
+
         $request = $client->request('POST','http://10.211.1.21:8000/v1/uat/getProductList',[
             'json' => $data,
         ]);
+
         $response = $request->getBody()->getContents();
         $result = json_decode($response,true);
         $p=$result['responseObject'];
         // dd($p);
         foreach($p as $mydata)
         {
-            if (  isset($mydata['description'])== null){
+            if (  isset($mydata['description'])==''){
                 $e=$mydata['description']='null';
         }else{
-                      
+                 //call model for insert data      
             ProductNetOne::insert([
                     'offer_id' =>$mydata['offerID'],
                     'offer_name'=>$mydata['offerName'],
@@ -200,7 +206,7 @@ class ProductNetOneController extends InfyOmBaseController
             
             }
             return redirect(route('admin.productNetOnes.index'));
-            // return redirect('admin/productNetOnes/index');
+            
     }
 
        }
