@@ -12,7 +12,7 @@ use App\ApiModels\ProductNetOneMobile;
 class ProductNetOneMobileController extends Controller
 {
     //
-    public function sendproduct(){
+    public function products(){
         $product= ProductNetOneMobile::all();
         $send = json_decode($product,true);
         return $send;
