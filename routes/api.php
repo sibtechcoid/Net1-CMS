@@ -55,3 +55,4 @@ use Illuminate\Http\Request;
     // Route::apiResource('banners', 'Api\BannerController');
     // Route::get('getDisplayBanner/{id}', 'Api\BannerController@getBanner');
 // });
+Route::post('productlist','Api\ProductNetOneMobileController@sendproduct');
