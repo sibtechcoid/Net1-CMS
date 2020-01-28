@@ -14,3 +14,4 @@ use Illuminate\Http\Request;
 */
 // api for send data to mobiles devices
 Route::post('productlist','Api\ProductNetOneMobileController@products');
+Route::post('deviceslist','Admin\DevicesNetOneController@Consume_Devices');

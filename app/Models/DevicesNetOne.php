@@ -9,13 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 class DevicesNetOne extends Model
 {
 
-    public $table = 'DevicesNetOnes';
+    public $table = 'devicesnetones';
     
 
 
-    public $fillable = [
-        
-    ];
+    protected $fillable = ['id','devices_name','ICCID','IMSI','RSRP','Version_Apps','SSID','User_Connection','IP_Address','IP_Address','MAC_Address'];
 
     /**
      * The attributes that should be casted to native types.

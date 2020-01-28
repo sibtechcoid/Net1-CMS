@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests;
-use App\Http\Requests\CreateDevicesNetOneRequest;
-use App\Http\Requests\UpdateDevicesNetOneRequest;
+// use App\Http\Requests;
+// use App\Http\Requests\CreateDevicesNetOneRequest;
+// use App\Http\Requests\UpdateDevicesNetOneRequest;
 use App\Repositories\DevicesNetOneRepository;
-use App\Http\Controllers\AppBaseController as InfyOmBaseController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Lang;
+// use App\Http\Controllers\AppBaseController as InfyOmBaseController;
+// use App\Http\Controllers\Controller;
+// use Illuminate\Http\Request;
+// // use Illuminate\Support\Facades\Lang;
 use App\Models\DevicesNetOne;
-use Flash;
+use GuzzleHttp\Client;
+// // use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
-use Response;
-
-class DevicesNetOneController extends InfyOmBaseController
+// use Response;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+class DevicesNetOneController extends Controller
 {
     /** @var  DevicesNetOneRepository */
     private $devicesNetOneRepository;
@@ -159,4 +163,51 @@ class DevicesNetOneController extends InfyOmBaseController
 
        }
 
-}
+       public function Consume_Devices()
+       {
+
+            $data= [
+                'data' => [''],
+            ];
+
+        $client = new Client([
+
+                'auth' => [
+                    'admin',
+                    'admin'
+                    ],
+
+            'header' => [
+                'content-type' => 'application/json;charset=UTF-8'],
+                ]);
+
+        $request = $client->request('POST','http://10.211.1.21:8000/v1/uat/getProductList',[
+            'json' => $data,
+        ]); // endpointnya ganti 
+
+        $response = $request->getBody()->getContents();
+        $result = json_decode($response,true);
+    dd($result);
+        // foreach($result as $mydata)
+        // {
+        // //     
+        //          //call model for insert data      
+        //          DevicesNetOne::insert([
+        //             'id' =>$mydata['id'],
+        //             'devices_name'=>$mydata['devices_name'],
+        //             'ICCID'=>$mydata['ICCID'],
+        //             'IMSI'=>$mydata['IMSI'],
+        //             'RSRP'=>$mydata['RSRP'],
+        //             'Version_Apps'=>$mydata['Version_Apps'],
+        //             'SSID'=>$mydata['SSID'],
+        //               'User_Connection'=>$mydata['User_Connection'],
+        //             'IP_Address'=>$mydata['IP_Address'],
+        //             'MAC_Address'=>$mydata['MAC_Address']
+        //     ]);
+            
+            }
+            // return redirect(route('admin.devicesNetOnes.index'))->with('success', Lang::get('message.success.delete'));
+            
+    }
+
+// }

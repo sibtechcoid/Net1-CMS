@@ -15,15 +15,15 @@ class CreateDevicesNetOnesTable extends Migration
     {
         Schema::create('DevicesNetOnes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('devices__name')->nullable();
-            $table->string('i_c_c_i_d')->nullable();
-            $table->string('i_m_s_i')->nullable();
-            $table->string('r_s_r_p')->nullable();
-            $table->string('version__apps')->nullable();
-            $table->string('s_s_i_d')->nullable();
-            $table->string('user__connection')->nullable();
-            $table->string('i_p__address')->nullable();
-            $table->string('m_a_c__address')->nullable();
+            $table->string('devices_name')->nullable();
+            $table->string('ICCID')->nullable();
+            $table->string('IMSI')->nullable();
+            $table->string('RSRP')->nullable();
+            $table->string('Version_Apps')->nullable();
+            $table->string('SSID')->nullable();
+            $table->string('User_Connection')->nullable();
+            $table->string('IP_Address')->nullable();
+            $table->string('MAC_Address')->nullable();
             $table->timestamps();
         });
     }
