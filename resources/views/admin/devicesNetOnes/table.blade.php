@@ -2,15 +2,15 @@
 <table class="table table-striped table-bordered" id="devicesNetOnes-table" width="100%">
     <thead>
      <tr>
-        <th>Devices  Name</th>
-        <th>I C C I D</th>
-        <th>I M S I</th>
-        <th>R S R P</th>
-        <th>Version  Apps</th>
-        <th>S S I D</th>
-        <th>User  Connection</th>
-        <th>I P  Address</th>
-        <th>M A C  Address</th>
+        <th>Devices_Name</th>
+        <th>ICCID</th>
+        <th>IMSI</th>
+        <th>RSRP</th>
+        <th>Version_Apps</th>
+        <th>SSID</th>
+        <th>User_Connection</th>
+        <th>IP_Address</th>
+        <th>MAC_Address</th>
         <th >Action</th>
      </tr>
     </thead>
@@ -26,7 +26,7 @@
             <td>{!! $devicesNetOne->user__connection !!}</td>
             <td>{!! $devicesNetOne->i_p__address !!}</td>
             <td>{!! $devicesNetOne->m_a_c__address !!}</td>
-            <td>
+            {{-- <td>
                  <a href="{{ route('admin.devicesNetOnes.show', collect($devicesNetOne)->first() ) }}">
                      <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view devicesNetOne"></i>
                  </a>
@@ -37,7 +37,7 @@
                      <i class="livicon" data-name="remove-alt" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete devicesNetOne"></i>
 
                  </a>
-            </td>
+            </td> --}}
         </tr>
     @endforeach
     </tbody>
