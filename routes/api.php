@@ -31,7 +31,7 @@ use Illuminate\Http\Request;
     // All about product routes
     // Route::get('productlist', 'Api\ProductlistController@getGuzzleRequest'); // product list dari bss
     // Route::get('productlistm','ProductlistmobileController@index');// productlis mobile send client
-    Route::apiResource('plans', 'Api\PlanController');
+    // Route::apiResource('plans', 'Api\PlanController');
     // Route::apiResource('products', 'Api\ProductController@index');
     // Route::put('product/{product}/activate', 'Api\ProductController@activate');
     // Route::put('product/{product}/deactivate', 'Api\ProductController@deactivate');
