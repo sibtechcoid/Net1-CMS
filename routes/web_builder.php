@@ -107,3 +107,18 @@ Route::get('bannerNetones/{bannerNetones}', ['as'=> 'bannerNetones.show', 'uses'
 Route::get('bannerNetones/{bannerNetones}/edit', ['as'=> 'bannerNetones.edit', 'uses' => 'BannerNetoneController@edit']);
 
 });
+
+
+// Route::group(array('prefix' => 'admin/','namespace' => 'Admin','middleware' => 'admin','as'=>'admin.'), function () {
+    Route::group(array('middleware' => 'auth', 'prefix' => 'admin/' ,'namespace' => 'Admin','as'=>'admin.'), function () {
+Route::get('devicesNetOnes', ['as'=> 'devicesNetOnes.index', 'uses' => 'DevicesNetOneController@index']);
+Route::post('devicesNetOnes', ['as'=> 'devicesNetOnes.store', 'uses' => 'DevicesNetOneController@store']);
+Route::get('devicesNetOnes/create', ['as'=> 'devicesNetOnes.create', 'uses' => 'DevicesNetOneController@create']);
+Route::put('devicesNetOnes/{devicesNetOnes}', ['as'=> 'devicesNetOnes.update', 'uses' => 'DevicesNetOneController@update']);
+Route::patch('devicesNetOnes/{devicesNetOnes}', ['as'=> 'devicesNetOnes.update', 'uses' => 'DevicesNetOneController@update']);
+Route::get('devicesNetOnes/{id}/delete', array('as' => 'devicesNetOnes.delete', 'uses' => 'DevicesNetOneController@getDelete'));
+Route::get('devicesNetOnes/{id}/confirm-delete', array('as' => 'devicesNetOnes.confirm-delete', 'uses' => 'DevicesNetOneController@getModalDelete'));
+Route::get('devicesNetOnes/{devicesNetOnes}', ['as'=> 'devicesNetOnes.show', 'uses' => 'DevicesNetOneController@show']);
+Route::get('devicesNetOnes/{devicesNetOnes}/edit', ['as'=> 'devicesNetOnes.edit', 'uses' => 'DevicesNetOneController@edit']);
+
+});
