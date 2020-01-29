@@ -162,6 +162,7 @@ class ProductNetOneController extends InfyOmBaseController
 
        public function reload()
        {
+        $now = date('Y-m-d', strtotime('+20 years'));
 
             $data= [
                 'data' => [''],
@@ -188,19 +189,20 @@ class ProductNetOneController extends InfyOmBaseController
         // dd($p);
         foreach($p as $mydata)
         {
-            if (  isset($mydata['description'])==''){
-                $e=$mydata['description']='null';
+            if (empty($mydata['description'])){
+                $e=$mydata['description']='kosong';
+                // echo $e;
         }else{
                  //call model for insert data      
             ProductNetOne::insert([
                     'offer_id' =>$mydata['offerID'],
                     'offer_name'=>$mydata['offerName'],
                     'display_name'=>$mydata['offerName'],
-                    'description'=>$e,
+                    'description'=>$mydata['description'],
                     'charging_type'=>$mydata['chargingType'],
                     'offer_type'=>$mydata['offerType'],
                     'service_zone'=>$mydata['serviceZone'],
-                    //  'validity_date'=>$mydata['serviceZone'],
+                     'validity_date'=>$now,
                     'total_price'=>$mydata['totalPrice']
             ]);}
             

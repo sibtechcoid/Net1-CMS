@@ -30,11 +30,11 @@ ProductNetOnes
                 <h4 class="card-title float-left"> <i class="livicon" data-name="list-ul" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                     ProductNetOnes List
                 </h4>
-                <div class="float-right">
+                {{-- <div class="float-right">
                     <a href="{{ route('admin.productNetOnes.create') }}" class="btn btn-sm btn-default"><span class="fa fa-plus"></span> @lang('button.create')</a>
-                </div>
+                </div> --}}
                 <div class="float-right">
-                    <a href="../admin/productNetOnes/reload" class="btn btn-sm btn-default"><span class="fa fa-plus"></span> @lang('button.reload')</a>
+                    <a href="{{ route('admin.productNetOnes.reload') }}" class="btn btn-sm btn-default"><span class="fa fa-plus"></span> @lang('Reload')</a>
                 </div>
             </div>
             <br />
