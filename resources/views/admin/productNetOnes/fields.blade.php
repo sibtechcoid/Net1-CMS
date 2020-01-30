@@ -1,8 +1,8 @@
 <!-- Offer Name Field -->
-<div class="form-group col-sm-12">
+{{-- <div class="form-group col-sm-12">
     {!! Form::label('offer_name', 'Offer Name:') !!}
     {!! Form::label('offer_name', null, ['class' => 'form-control']) !!}
-</div>
+</div> --}}
 
 <!-- Display Name Field -->
 <div class="form-group col-sm-12">
@@ -10,11 +10,11 @@
     {!! Form::text('display_name', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Validity Date Field -->
+{{-- <!-- Validity Date Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('validity_date', 'Validity Date:') !!}
     {!! Form::text('validity_date', null, ['class' => 'form-control']) !!}
-</div>
+</div> --}}
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12 text-center">

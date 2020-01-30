@@ -18,4 +18,6 @@ class ProductNetOneMobileController extends Controller
         return $send;
 
     }
+
+
 }
