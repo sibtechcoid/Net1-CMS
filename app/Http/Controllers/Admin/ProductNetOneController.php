@@ -14,6 +14,7 @@ use GuzzleHttp\Client;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Illuminate\Support\Arr;
 
 class ProductNetOneController extends InfyOmBaseController
 {
@@ -189,16 +190,28 @@ class ProductNetOneController extends InfyOmBaseController
         // dd($p);
         foreach($p as $mydata)
         {
-            if (empty($mydata['description'])){
-                $e=$mydata['description']='kosong';
-                // echo $e;
-        }else{
-                 //call model for insert data      
-            ProductNetOne::insert([
+            if (Arr::exists($mydata,'description')){
+                ProductNetOne::firstOrCreate([
                     'offer_id' =>$mydata['offerID'],
                     'offer_name'=>$mydata['offerName'],
                     'display_name'=>$mydata['offerName'],
                     'description'=>$mydata['description'],
+                    'charging_type'=>$mydata['chargingType'],
+                    'offer_type'=>$mydata['offerType'],
+                    'service_zone'=>$mydata['serviceZone'],
+                     'validity_date'=>$now,
+                    'total_price'=>$mydata['totalPrice']
+            ]);
+               
+                // echo $e;
+        }else{
+            $e=$mydata['description']='kosong';
+                 //call model for insert data      
+            ProductNetOne::firstOrCreate([
+                    'offer_id' =>$mydata['offerID'],
+                    'offer_name'=>$mydata['offerName'],
+                    'display_name'=>$mydata['offerName'],
+                    'description'=>$e,
                     'charging_type'=>$mydata['chargingType'],
                     'offer_type'=>$mydata['offerType'],
                     'service_zone'=>$mydata['serviceZone'],
