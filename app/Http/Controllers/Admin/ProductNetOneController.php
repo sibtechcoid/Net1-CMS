@@ -191,7 +191,7 @@ class ProductNetOneController extends InfyOmBaseController
         foreach($p as $mydata)
         {
             if (Arr::exists($mydata,'description')){
-                ProductNetOne::firstOrCreate([
+                ProductNetOne::insertOrIgnore([
                     'offer_id' =>$mydata['offerID'],
                     'offer_name'=>$mydata['offerName'],
                     'display_name'=>$mydata['offerName'],
@@ -207,7 +207,7 @@ class ProductNetOneController extends InfyOmBaseController
         }else{
             $e=$mydata['description']='kosong';
                  //call model for insert data      
-            ProductNetOne::firstOrCreate([
+            ProductNetOne::insertOrIgnore([
                     'offer_id' =>$mydata['offerID'],
                     'offer_name'=>$mydata['offerName'],
                     'display_name'=>$mydata['offerName'],

@@ -15,7 +15,7 @@ class CreateProductNetOnesTable extends Migration
     {
         Schema::create('ProductNetOnes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('offer_id')->nullable();
+            $table->string('offer_id')->nullable()->unique();
             $table->string('offer_name')->nullable();
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
