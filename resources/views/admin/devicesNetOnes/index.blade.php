@@ -8,7 +8,7 @@ DevicesNetOnes
 {{-- Page content --}}
 @section('content')
 <section class="content-header">
-    <h1>DevicesNetOnes</h1>
+    <h1>DevicesNet1</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
@@ -16,7 +16,7 @@ DevicesNetOnes
             </a>
         </li>
         <li>DevicesNet1</li>
-        <li class="active">DevicesNetOnes List</li>
+        <li class="active">DevicesNet1 List</li>
     </ol>
 </section>
 

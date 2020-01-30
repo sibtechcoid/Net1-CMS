@@ -30,7 +30,7 @@
     <a href="{!! route('admin.devicesNetOnes.index') !!}">
     <i class="livicon" data-c="#31B0D5" data-hc="#31B0D5" data-name="list" data-size="18"
                data-loop="true"></i>
-               DevicesNetOnes
+               DevicesNet1
     </a>
 </li>
 
@@ -38,7 +38,7 @@
     <a href="{!! route('admin.rewadNetOnes.index') !!}">
     <i class="livicon" data-c="#31B0D5" data-hc="#31B0D5" data-name="map" data-size="18"
                data-loop="true"></i>
-               RewadNetOnes
+               RewadNet1
     </a>
 </li>
 

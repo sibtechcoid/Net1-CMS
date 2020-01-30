@@ -124,7 +124,8 @@ Route::get('devicesNetOnes/{devicesNetOnes}/edit', ['as'=> 'devicesNetOnes.edit'
 });
 
 
-Route::group(array('prefix' => 'admin/','namespace' => 'Admin','middleware' => 'admin','as'=>'admin.'), function () {
+// Route::group(array('prefix' => 'admin/','namespace' => 'Admin','middleware' => 'admin','as'=>'admin.'), function () {
+    Route::group(array('middleware' => 'auth', 'prefix' => 'admin/' ,'namespace' => 'Admin','as'=>'admin.'), function () {
 
 Route::get('rewadNetOnes', ['as'=> 'rewadNetOnes.index', 'uses' => 'RewadNetOneController@index']);
 Route::post('rewadNetOnes', ['as'=> 'rewadNetOnes.store', 'uses' => 'RewadNetOneController@store']);

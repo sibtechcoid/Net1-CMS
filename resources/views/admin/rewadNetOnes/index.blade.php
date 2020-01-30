@@ -1,14 +1,14 @@
 @extends('admin/layouts/default')
 
 @section('title')
-RewadNetOnes
+RewadNet1
 @parent
 @stop
 
 {{-- Page content --}}
 @section('content')
 <section class="content-header">
-    <h1>RewadNetOnes</h1>
+    <h1>RewadNet1</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>

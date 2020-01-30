@@ -1,7 +1,7 @@
 @extends('admin/layouts/default')
 
 @section('title')
-RewadNetOne
+RewadNet1
 @parent
 @stop
 
@@ -14,7 +14,7 @@ RewadNetOne
                 Dashboard
             </a>
         </li>
-        <li>RewadNetOnes</li>
+        <li>RewadNet1</li>
         <li class="active">RewadNetOne View</li>
     </ol>
 </section>
