@@ -15,7 +15,7 @@ DevicesNetOnes
                 Dashboard
             </a>
         </li>
-        <li>DevicesNetOnes</li>
+        <li>DevicesNet1</li>
         <li class="active">DevicesNetOnes List</li>
     </ol>
 </section>

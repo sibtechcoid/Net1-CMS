@@ -1,7 +1,7 @@
 @extends('admin/layouts/default')
 
 @section('title')
-DevicesNetOne
+DevicesNet1
 @parent
 @stop
 
@@ -14,7 +14,7 @@ DevicesNetOne
                 Dashboard
             </a>
         </li>
-        <li>DevicesNetOnes</li>
+        <li>DevicesNet1</li>
         <li class="active">DevicesNetOne View</li>
     </ol>
 </section>
