@@ -122,3 +122,18 @@ Route::get('devicesNetOnes/{devicesNetOnes}', ['as'=> 'devicesNetOnes.show', 'us
 Route::get('devicesNetOnes/{devicesNetOnes}/edit', ['as'=> 'devicesNetOnes.edit', 'uses' => 'DevicesNetOneController@edit']);
 
 });
+
+
+Route::group(array('prefix' => 'admin/','namespace' => 'Admin','middleware' => 'admin','as'=>'admin.'), function () {
+
+Route::get('rewadNetOnes', ['as'=> 'rewadNetOnes.index', 'uses' => 'RewadNetOneController@index']);
+Route::post('rewadNetOnes', ['as'=> 'rewadNetOnes.store', 'uses' => 'RewadNetOneController@store']);
+Route::get('rewadNetOnes/create', ['as'=> 'rewadNetOnes.create', 'uses' => 'RewadNetOneController@create']);
+Route::put('rewadNetOnes/{rewadNetOnes}', ['as'=> 'rewadNetOnes.update', 'uses' => 'RewadNetOneController@update']);
+Route::patch('rewadNetOnes/{rewadNetOnes}', ['as'=> 'rewadNetOnes.update', 'uses' => 'RewadNetOneController@update']);
+Route::get('rewadNetOnes/{id}/delete', array('as' => 'rewadNetOnes.delete', 'uses' => 'RewadNetOneController@getDelete'));
+Route::get('rewadNetOnes/{id}/confirm-delete', array('as' => 'rewadNetOnes.confirm-delete', 'uses' => 'RewadNetOneController@getModalDelete'));
+Route::get('rewadNetOnes/{rewadNetOnes}', ['as'=> 'rewadNetOnes.show', 'uses' => 'RewadNetOneController@show']);
+Route::get('rewadNetOnes/{rewadNetOnes}/edit', ['as'=> 'rewadNetOnes.edit', 'uses' => 'RewadNetOneController@edit']);
+
+});
