@@ -125,7 +125,7 @@ Route::group(
                 Route::get('{user}/delete', 'UsersController@destroy')->name('users.delete');
                 Route::get('{user}/confirm-delete', 'UsersController@getModalDelete')->name('users.confirm-delete');
                 Route::get('{user}/restore', 'UsersController@getRestore')->name('restore.user');
-                       Route::post('{user}/passwordreset', 'UsersController@passwordreset')->name('passwordreset');
+                Route::post('{user}/passwordreset', 'UsersController@passwordreset')->name('passwordreset');
                 Route::post('passwordreset', 'UsersController@passwordreset')->name('passwordreset');
             }
         );
