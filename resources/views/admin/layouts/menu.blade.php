@@ -42,3 +42,11 @@
     </a>
 </li> --}}
 
+<li class="{{ Request::is('admin/rewards*') ? 'active' : '' }}">
+    <a href="{!! route('admin.rewards.index') !!}">
+    <i class="livicon" data-c="#31B0D5" data-hc="#31B0D5" data-name="map" data-size="18"
+               data-loop="true"></i>
+               RewardsNet1
+    </a>
+</li>
+

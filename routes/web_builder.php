@@ -123,18 +123,16 @@ Route::get('devicesNetOnes/{devicesNetOnes}/edit', ['as'=> 'devicesNetOnes.edit'
 
 });
 
+Route::group(array('middleware' => 'auth', 'prefix' => 'admin/' ,'namespace' => 'Admin','as'=>'admin.'), function () {
 
-// Route::group(array('prefix' => 'admin/','namespace' => 'Admin','middleware' => 'admin','as'=>'admin.'), function () {
-//     Route::group(array('middleware' => 'auth', 'prefix' => 'admin/' ,'namespace' => 'Admin','as'=>'admin.'), function () {
+Route::get('rewards', ['as'=> 'rewards.index', 'uses' => 'RewardController@index']);
+Route::post('rewards', ['as'=> 'rewards.store', 'uses' => 'RewardController@store']);
+Route::get('rewards/create', ['as'=> 'rewards.create', 'uses' => 'RewardController@create']);
+Route::put('rewards/{rewards}', ['as'=> 'rewards.update', 'uses' => 'RewardController@update']);
+Route::patch('rewards/{rewards}', ['as'=> 'rewards.update', 'uses' => 'RewardController@update']);
+Route::get('rewards/{id}/delete', array('as' => 'rewards.delete', 'uses' => 'RewardController@getDelete'));
+Route::get('rewards/{id}/confirm-delete', array('as' => 'rewards.confirm-delete', 'uses' => 'RewardController@getModalDelete'));
+Route::get('rewards/{rewards}', ['as'=> 'rewards.show', 'uses' => 'RewardController@show']);
+Route::get('rewards/{rewards}/edit', ['as'=> 'rewards.edit', 'uses' => 'RewardController@edit']);
 
-// Route::get('rewadNetOnes', ['as'=> 'rewadNetOnes.index', 'uses' => 'RewadNetOneController@index']);
-// Route::post('rewadNetOnes', ['as'=> 'rewadNetOnes.store', 'uses' => 'RewadNetOneController@store']);
-// Route::get('rewadNetOnes/create', ['as'=> 'rewadNetOnes.create', 'uses' => 'RewadNetOneController@create']);
-// Route::put('rewadNetOnes/{rewadNetOnes}', ['as'=> 'rewadNetOnes.update', 'uses' => 'RewadNetOneController@update']);
-// Route::patch('rewadNetOnes/{rewadNetOnes}', ['as'=> 'rewadNetOnes.update', 'uses' => 'RewadNetOneController@update']);
-// Route::get('rewadNetOnes/{id}/delete', array('as' => 'rewadNetOnes.delete', 'uses' => 'RewadNetOneController@getDelete'));
-// Route::get('rewadNetOnes/{id}/confirm-delete', array('as' => 'rewadNetOnes.confirm-delete', 'uses' => 'RewadNetOneController@getModalDelete'));
-// Route::get('rewadNetOnes/{rewadNetOnes}', ['as'=> 'rewadNetOnes.show', 'uses' => 'RewadNetOneController@show']);
-// Route::get('rewadNetOnes/{rewadNetOnes}/edit', ['as'=> 'rewadNetOnes.edit', 'uses' => 'RewadNetOneController@edit']);
-
-// });
+});
