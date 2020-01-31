@@ -1,21 +1,21 @@
 @extends('admin/layouts/default')
 
 @section('title')
-RewadNetOnes
+RewardNet1
 @parent
 @stop
 @section('content')
   @include('common.errors')
     <section class="content-header">
-     <h1>RewadNetOnes Edit</h1>
+     <h1>RewardNet1 Edit</h1>
      <ol class="breadcrumb">
          <li>
              <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
                  Dashboard
              </a>
          </li>
-         <li>RewadNetOnes</li>
-         <li class="active">Edit RewadNetOne </li>
+         <li>RewardNet1</li>
+         <li class="active">Edit RewardNet1 </li>
      </ol>
     </section>
     <section class="content">
@@ -25,7 +25,7 @@ RewadNetOnes
               <div class="card border-primary">
                     <div class="card-header bg-primary text-white">
                         <h4 class="card-title"> <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Edit  RewadNetOne
+                            Edit  RewardNet1
                         </h4></div>
                     <br />
                 <div class="card-body">

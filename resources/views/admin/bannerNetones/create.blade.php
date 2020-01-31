@@ -1,22 +1,22 @@
 @extends('admin/layouts/default')
 
 @section('title')
-BannerNetone
+BannerNet1
 @parent
 @stop
 
 @section('content')
 @include('common.errors')
 <section class="content-header">
-    <h1>BannerNetone</h1>
+    <h1>BannerNet1</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
                 Dashboard
             </a>
         </li>
-        <li>BannerNetones</li>
-        <li class="active">Create BannerNetone </li>
+        <li>BannerNet1</li>
+        <li class="active">Create BannerNet1 </li>
     </ol>
 </section>
 <section class="content">
@@ -26,7 +26,7 @@ BannerNetone
      <div class="card border-primary">
             <div class="card-header bg-primary text-white">
                 <h4 class="card-title"> <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                    Create New  BannerNetone
+                    Create New  BannerNet1
                 </h4></div>
             <br />
             <div class="card-body">

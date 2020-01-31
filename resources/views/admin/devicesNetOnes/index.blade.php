@@ -1,7 +1,7 @@
 @extends('admin/layouts/default')
 
 @section('title')
-DevicesNetOnes
+DevicesNet1
 @parent
 @stop
 
@@ -28,7 +28,7 @@ DevicesNetOnes
         <div class="card border-primary ">
             <div class="card-header bg-primary text-white">
                 <h4 class="card-title float-left"> <i class="livicon" data-name="list-ul" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                    DevicesNetOnes List
+                    DevicesNet1 List
                 </h4>
                 {{-- <div class="float-right">
                     <a href="{{ route('admin.devicesNetOnes.create') }}" class="btn btn-sm btn-default"><span class="fa fa-plus"></span> @lang('button.create')</a>

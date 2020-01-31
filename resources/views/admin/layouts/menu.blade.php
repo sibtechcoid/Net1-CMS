@@ -38,7 +38,7 @@
     <a href="{!! route('admin.rewadNetOnes.index') !!}">
     <i class="livicon" data-c="#31B0D5" data-hc="#31B0D5" data-name="map" data-size="18"
                data-loop="true"></i>
-               RewadNet1
+               RewardNet1
     </a>
 </li>
 

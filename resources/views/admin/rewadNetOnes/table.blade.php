@@ -2,7 +2,7 @@
 <table class="table table-striped table-bordered" id="rewadNetOnes-table" width="100%">
     <thead>
      <tr>
-        <th>Nama Rewads</th>
+        <th>Nama Rewards</th>
         <th>Validity Date</th>
         <th >Action</th>
      </tr>

@@ -1,21 +1,21 @@
 @extends('admin/layouts/default')
 
 @section('title')
-DevicesNetOnes
+DevicesNet1
 @parent
 @stop
 @section('content')
   @include('common.errors')
     <section class="content-header">
-     <h1>DevicesNetOnes Edit</h1>
+     <h1>DevicesNet1 Edit</h1>
      <ol class="breadcrumb">
          <li>
              <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
                  Dashboard
              </a>
          </li>
-         <li>DevicesNetOnes</li>
-         <li class="active">Edit DevicesNetOne </li>
+         <li>DevicesNet1</li>
+         <li class="active">Edit DevicesNet1 </li>
      </ol>
     </section>
     <section class="content">
@@ -25,7 +25,7 @@ DevicesNetOnes
               <div class="card border-primary">
                     <div class="card-header bg-primary text-white">
                         <h4 class="card-title"> <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Edit  DevicesNetOne
+                            Edit  DevicesNet1
                         </h4></div>
                     <br />
                 <div class="card-body">

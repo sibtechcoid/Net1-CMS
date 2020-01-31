@@ -1,22 +1,22 @@
 @extends('admin/layouts/default')
 
 @section('title')
-BannerNetones
+BannerNet1
 @parent
 @stop
 
 {{-- Page content --}}
 @section('content')
 <section class="content-header">
-    <h1>BannerNetones</h1>
+    <h1>BannerNet1</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
                 Dashboard
             </a>
         </li>
-        <li>BannerNetones</li>
-        <li class="active">BannerNetones List</li>
+        <li>BannerNet1</li>
+        <li class="active">BannerNet1 List</li>
     </ol>
 </section>
 
@@ -28,7 +28,7 @@ BannerNetones
         <div class="card border-primary ">
             <div class="card-header bg-primary text-white">
                 <h4 class="card-title float-left"> <i class="livicon" data-name="list-ul" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                    BannerNetones List
+                    BannerNet1 List
                 </h4>
                 <div class="float-right">
                     <a href="{{ route('admin.bannerNetones.create') }}" class="btn btn-sm btn-default"><span class="fa fa-plus"></span> @lang('button.create')</a>

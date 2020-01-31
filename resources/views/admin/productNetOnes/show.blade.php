@@ -7,7 +7,7 @@ ProductNet1
 
 @section('content')
 <section class="content-header">
-    <h1>ProductNetOne View</h1>
+    <h1>ProductNet1 View</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
@@ -15,7 +15,7 @@ ProductNet1
             </a>
         </li>
         <li>ProductNet1</li>
-        <li class="active">ProductNetOne View</li>
+        <li class="active">ProductNet1 View</li>
     </ol>
 </section>
 
@@ -26,7 +26,7 @@ ProductNet1
        <div class="card border-primary">
                 <div class="card-header bg-primary text-white">
                     <h4 class="card-title"> <i class="livicon" data-name="list-ul" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        ProductNetOne details
+                        ProductNet1 details
                     </h4>
                 </div>
                     <div class="card-body">

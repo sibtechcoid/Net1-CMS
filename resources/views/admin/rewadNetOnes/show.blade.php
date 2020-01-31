@@ -7,15 +7,15 @@ RewadNet1
 
 @section('content')
 <section class="content-header">
-    <h1>RewadNetOne View</h1>
+    <h1>RewardNet1 View</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
                 Dashboard
             </a>
         </li>
-        <li>RewadNet1</li>
-        <li class="active">RewadNetOne View</li>
+        <li>RewardNet1</li>
+        <li class="active">RewardNet1 View</li>
     </ol>
 </section>
 
@@ -26,7 +26,7 @@ RewadNet1
        <div class="card border-primary">
                 <div class="card-header bg-primary text-white">
                     <h4 class="card-title"> <i class="livicon" data-name="list-ul" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        RewadNetOne details
+                        RewardNet1 details
                     </h4>
                 </div>
                     <div class="card-body">

@@ -1,22 +1,22 @@
 @extends('admin/layouts/default')
 
 @section('title')
-ProductNetOne
+ProductNet1
 @parent
 @stop
 
 @section('content')
 @include('common.errors')
 <section class="content-header">
-    <h1>ProductNetOne</h1>
+    <h1>ProductNet1</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
                 Dashboard
             </a>
         </li>
-        <li>ProductNetOnes</li>
-        <li class="active">Create ProductNetOne </li>
+        <li>ProductNet1</li>
+        <li class="active">Create ProductNet1 </li>
     </ol>
 </section>
 <section class="content">
@@ -26,7 +26,7 @@ ProductNetOne
      <div class="card border-primary">
             <div class="card-header bg-primary text-white">
                 <h4 class="card-title"> <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                    Create New  ProductNetOne
+                    Create New  ProductNet1
                 </h4></div>
             <br />
             <div class="card-body">

@@ -1,6 +1,6 @@
 <!-- Nama Rewads Field -->
 <div class="form-group col-sm-12">
-    {!! Form::label('nama_rewads', 'Nama Rewads:') !!}
+    {!! Form::label('nama_rewads', 'Nama Rewards:') !!}
     {!! Form::text('nama_rewads', null, ['class' => 'form-control']) !!}
 </div>
 
