@@ -13,7 +13,8 @@ Route::group(array('middleware' => 'auth', 'prefix' => 'admin/' ,'namespace' => 
     Route::get('products/{id}/confirm-delete', array('as' => 'confirm-delete', 'uses' => 'ProductController@getModalDelete'));
     Route::get('products/{products}', ['as'=> 'show', 'uses' => 'ProductController@show']);
     Route::get('products/{products}/edit', ['as'=> 'edit', 'uses' => 'ProductController@edit']);
-    Route::post('products/upload', ['as' => 'upload', 'uses' => 'ProductController@uploadProductExcel']);
+    Route::post('products/upload', ['as' => 'upload', 'uses' => 'ProductController@uploadAsExcel']);
+    // Route::get('products/download', ['as' => 'download', 'uses' => 'ProductController@downloadAsExcel']);
 
     // Zone Price
     Route::get('products/{id}/zonePrices', ['as' => 'getZonePrices', 'uses' => 'ProductController@getZonePrices']);
@@ -39,19 +40,19 @@ Route::group(array('prefix' => 'admin/', 'middleware' => 'auth', 'namespace' => 
 });
 
 
-Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' => 'auth', 'as'=>'admin.productTypes.'), function () {
+// Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' => 'auth', 'as'=>'admin.productTypes.'), function () {
 
-    Route::get('productTypes', ['as'=> 'index', 'uses' => 'ProductTypeController@index']);
-    Route::post('productTypes', ['as'=> 'store', 'uses' => 'ProductTypeController@store']);
-    Route::get('productTypes/create', ['as'=> 'create', 'uses' => 'ProductTypeController@create']);
-    Route::put('productTypes/{productTypes}', ['as'=> 'update', 'uses' => 'ProductTypeController@update']);
-    Route::patch('productTypes/{productTypes}', ['as'=> 'update', 'uses' => 'ProductTypeController@update']);
-    Route::get('productTypes/{id}/delete', array('as' => 'delete', 'uses' => 'ProductTypeController@getDelete'));
-    Route::get('productTypes/{id}/confirm-delete', array('as' => 'confirm-delete', 'uses' => 'ProductTypeController@getModalDelete'));
-    Route::get('productTypes/{productTypes}', ['as'=> 'show', 'uses' => 'ProductTypeController@show']);
-    Route::get('productTypes/{productTypes}/edit', ['as'=> 'edit', 'uses' => 'ProductTypeController@edit']);
+//     Route::get('productTypes', ['as'=> 'index', 'uses' => 'ProductTypeController@index']);
+//     Route::post('productTypes', ['as'=> 'store', 'uses' => 'ProductTypeController@store']);
+//     Route::get('productTypes/create', ['as'=> 'create', 'uses' => 'ProductTypeController@create']);
+//     Route::put('productTypes/{productTypes}', ['as'=> 'update', 'uses' => 'ProductTypeController@update']);
+//     Route::patch('productTypes/{productTypes}', ['as'=> 'update', 'uses' => 'ProductTypeController@update']);
+//     Route::get('productTypes/{id}/delete', array('as' => 'delete', 'uses' => 'ProductTypeController@getDelete'));
+//     Route::get('productTypes/{id}/confirm-delete', array('as' => 'confirm-delete', 'uses' => 'ProductTypeController@getModalDelete'));
+//     Route::get('productTypes/{productTypes}', ['as'=> 'show', 'uses' => 'ProductTypeController@show']);
+//     Route::get('productTypes/{productTypes}/edit', ['as'=> 'edit', 'uses' => 'ProductTypeController@edit']);
 
-});
+// });
 
 Route::group(array('prefix' => 'admin/','namespace' => 'Admin','middleware' => 'auth','as'=>'admin.banners.'), function () {
 

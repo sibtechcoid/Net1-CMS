@@ -27,7 +27,7 @@
 <table class="table table-striped table-bordered" id="products-table" width="100%">
     <thead>
      <tr>
-        <th>Action</th>
+        {{-- <th>Action</th> --}}
         <th>Offer ID</th>
         <th style="width: 16px;">Offer Name</th>
         <th>Display Name</th>
@@ -40,7 +40,7 @@
      </tr>
     </thead>
     <tbody>
-        @foreach ($products as $item)
+        @foreach ($products as $key => $item)
         <tr>
             {{-- <td>
                  <a href="{{ route('admin.product.show', collect($show ?? '')->first() ) }}">
@@ -147,75 +147,75 @@
         //         elem_zone.addClass('zone-prices-hide').removeClass('zone-price-show');
         // });
 
-        $('button.btn_zonePriceModal').on('click', function() {
-            let product_id = $(this).val();
-            let url = '/admin/getProduct/' + product_id;
-            // alert(url);
-            $('#zonePriceModalMessage').empty();
-            $.get(url, function(response) {
-                console.log(response);
-                let result = response;
-                if(result.code==200 && result.product!=null) {
-                    $('#p_plan').text(result.product.plan);
-                    $('#p_product_type').text(result.product.product_type);
-                    $('#p_product_name').text(result.product.product_name);
-                    $('#p_product_description').text(result.product.product_description);
-                    $('#p_product_expiry_in_days').text(result.product.product_expiry_in_days);
-                    $('#addZonePrice').val(product_id);
-                    if(result.product.plan == 'prepaid') {
-                        $('#zonePriceModal div.modal-header').removeClass('bg-warning').addClass('bg-success');
-                    }
-                    else {
-                        $('#zonePriceModal div.modal-header').removeClass('bg-success').addClass('bg-warning');
-                    }
-                }
-            });
-        });
+        // $('button.btn_zonePriceModal').on('click', function() {
+        //     let product_id = $(this).val();
+        //     let url = '/admin/getProduct/' + product_id;
+        //     // alert(url);
+        //     $('#zonePriceModalMessage').empty();
+        //     $.get(url, function(response) {
+        //         console.log(response);
+        //         let result = response;
+        //         if(result.code==200 && result.product!=null) {
+        //             $('#p_plan').text(result.product.plan);
+        //             $('#p_product_type').text(result.product.product_type);
+        //             $('#p_product_name').text(result.product.product_name);
+        //             $('#p_product_description').text(result.product.product_description);
+        //             $('#p_product_expiry_in_days').text(result.product.product_expiry_in_days);
+        //             $('#addZonePrice').val(product_id);
+        //             if(result.product.plan == 'prepaid') {
+        //                 $('#zonePriceModal div.modal-header').removeClass('bg-warning').addClass('bg-success');
+        //             }
+        //             else {
+        //                 $('#zonePriceModal div.modal-header').removeClass('bg-success').addClass('bg-warning');
+        //             }
+        //         }
+        //     });
+        // });
 
-        $('#addZonePrice').on('click', function() {
-            let product_id = $(this).val();
-            let url = '/admin/products/'+product_id+'/create/zonePrice';
-            let zone_id = $('input[name=zone_id]').val();
-            let zone_price = $('input[name=zone_price]').val();
-            $('#zonePriceModalMessage').empty();
-            if(zone_id =='') {
-                $('input[name=zone_id]').addClass('is-invalid');
-                $('#zonePriceModalMessage').append('<div class="alert alert-danger" role="alert">' +
-                    'Please fill in the value of Zone Id' +
-                    '</div>');
-                return;
-            }
-            $('input[name=zone_id]').removeClass('is-invalid');
-            if(zone_price == '') {
-                $('input[name=zone_price]').addClass('is-invalid');
-                $('#zonePriceModalMessage').append('<div class="alert alert-danger" role="alert">' +
-                    'Please fill in the value of Zone Price' +
-                    '</div>');
-                return;
-            }
-            $('input[name=zone_price]').removeClass('is-invalid');
-            data = {'product_id': product_id, 'zone_id': zone_id, 'zone_price': zone_price};
-            $.post(url, data, function(response) {
-                console.log(response);
-                let result = response;
-                if(result.code==200) {
-                    $('#zonePriceModalMessage').append('<div class="alert alert-success" role="alert">' +
-                        'New Zone Price added.' +
-                        '</div>');
-                    $('input[name=zone_id]').val('');
-                    $('input[name=zone_price]').val('');
-                }
-                else if('errors' in result) {
-                    // console.log(response.errors);
-                    $('input[name=zone_id]').addClass('is-invalid');
-                    $('#zonePriceModalMessage').empty();
-                    $('#zonePriceModalMessage').append('<div class="alert alert-warning" role="alert">' +
-                        response.errors +
-                        '</div>');
-                }
+        // $('#addZonePrice').on('click', function() {
+        //     let product_id = $(this).val();
+        //     let url = '/admin/products/'+product_id+'/create/zonePrice';
+        //     let zone_id = $('input[name=zone_id]').val();
+        //     let zone_price = $('input[name=zone_price]').val();
+        //     $('#zonePriceModalMessage').empty();
+        //     if(zone_id =='') {
+        //         $('input[name=zone_id]').addClass('is-invalid');
+        //         $('#zonePriceModalMessage').append('<div class="alert alert-danger" role="alert">' +
+        //             'Please fill in the value of Zone Id' +
+        //             '</div>');
+        //         return;
+        //     }
+        //     $('input[name=zone_id]').removeClass('is-invalid');
+        //     if(zone_price == '') {
+        //         $('input[name=zone_price]').addClass('is-invalid');
+        //         $('#zonePriceModalMessage').append('<div class="alert alert-danger" role="alert">' +
+        //             'Please fill in the value of Zone Price' +
+        //             '</div>');
+        //         return;
+        //     }
+        //     $('input[name=zone_price]').removeClass('is-invalid');
+        //     data = {'product_id': product_id, 'zone_id': zone_id, 'zone_price': zone_price};
+        //     $.post(url, data, function(response) {
+        //         console.log(response);
+        //         let result = response;
+        //         if(result.code==200) {
+        //             $('#zonePriceModalMessage').append('<div class="alert alert-success" role="alert">' +
+        //                 'New Zone Price added.' +
+        //                 '</div>');
+        //             $('input[name=zone_id]').val('');
+        //             $('input[name=zone_price]').val('');
+        //         }
+        //         else if('errors' in result) {
+        //             // console.log(response.errors);
+        //             $('input[name=zone_id]').addClass('is-invalid');
+        //             $('#zonePriceModalMessage').empty();
+        //             $('#zonePriceModalMessage').append('<div class="alert alert-warning" role="alert">' +
+        //                 response.errors +
+        //                 '</div>');
+        //         }
 
-            });
-        });
+        //     });
+        // });
 
         $('#productExcel').on('change',function(){
             //get the file name

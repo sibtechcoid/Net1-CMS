@@ -1,10 +1,10 @@
-<li class="{{ Request::is('admin/productTypes') ? 'active' : '' }}">
+{{-- <li class="{{ Request::is('admin/productTypes') ? 'active' : '' }}">
     <a href="{!! route('admin.productTypes.index') !!}">
     <i class="livicon" data-c="#F89A14" data-hc="#F89A14" data-name="list" data-size="18"
                data-loop="true"></i>
                Product Types
     </a>
-</li>
+</li> --}}
 
 <li class="{{ Request::is('admin/products') ? 'active' : '' }}">
     <a href="{!! route('admin.products.index') !!}">

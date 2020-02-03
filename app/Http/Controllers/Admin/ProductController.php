@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 // use Illuminate\Support\Facades\Lang;
 use App\Models\User;
+use App\Exports\ProductsExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Excel\ProductsImport;
 use Illuminate\Support\Facades\Cookie;
@@ -220,4 +221,38 @@ class ProductController extends Controller
 
        }
 
+       public function uploadAsExcel(Request $request) {
+        $request->validate([
+            'productExcel' => 'required'
+        ]);
+        try {
+//            $pathTemp = $request->file('productExcel')->store('temp');
+//            $path = storage_path('app').'/'.$pathTemp;
+            echo "<h2>Excel File Name: <font style='font-weight:normal; font-size: 17px;'>'".$request->file('productExcel')->getClientOriginalName()."'</font></h2>";
+            echo "
+            <style>
+                table {
+                  border-collapse: collapse;
+                }
+
+                table, th, td {
+                  border: 1px solid black;
+                }
+            </style>";
+
+            echo "<table>";
+            $data = Excel::import(new ProductsImport, $request->file('productExcel'));
+            echo "</table>";
+//            var_dump($data);
+//            exit;
+        }
+        catch (\Exception $exception) {
+            echo $exception;
+        }
+       }
+
+       public function downloadAsExcel() {
+        return Excel::download(new ProductsExport, 'products.xlsx');
+       }
+       
 }
