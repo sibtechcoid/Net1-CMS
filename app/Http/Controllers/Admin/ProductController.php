@@ -227,27 +227,43 @@ class ProductController extends Controller
         try {
 //            $pathTemp = $request->file('productExcel')->store('temp');
 //            $path = storage_path('app').'/'.$pathTemp;
-            echo "<h2>Excel File Name: <font style='font-weight:normal; font-size: 17px;'>'".$request->file('productExcel')->getClientOriginalName()."'</font></h2>";
-            echo "
-            <style>
-                table {
-                  border-collapse: collapse;
-                }
+            // echo "<h2>Excel File Name: <font style='font-weight:normal; font-size: 17px;'>'".$request->file('productExcel')->getClientOriginalName()."'</font></h2>";
+            // echo "
+            // <style>
+            //     table {
+            //       border-collapse: collapse;
+            //     }
 
-                table, th, td {
-                  border: 1px solid black;
-                }
-            </style>";
+            //     table, th, td {
+            //       border: 1px solid black;
+            //     }
+            // </style>";
 
-            echo "<table>";
-            $data = Excel::import(new ProductsImport, $request->file('productExcel'));
-            echo "</table>";
-//            var_dump($data);
-//            exit;
+            // echo "<table>";
+            $import = Excel::import(new ProductsImport, $request->file('productExcel'));
+            // return redirect('admin/products');
+            // echo "</table>";
+        //    var_dump($data);
         }
-        catch (\Exception $exception) {
-            echo $exception;
+        catch (\Maatwebsite\Excel\Validators\ValidationException $exception) {
+            $failures = $exception->failures();
+            $error = [];
+            foreach ($failures as $failure) {
+                    $error['row'] = $failure->row(); // row that went wrong
+                    $error['attribute'] = $failure->attribute(); // either heading key (if using heading row concern) or column index
+                    // dd($failure);
+                    foreach ($failure->error() as $value) {
+                        $error['error'] = $value;
+                    }
+                }
+            // dd($error);
+            // exit;
+            return back()->withErrors(['error' => $error]);
+            // echo get_class($exception) ."<br>";
+            // echo $exception->getCode() ."<br>";
+            // echo $exception->getMessage();
         }
+        return back();
        }
 
        public function downloadAsExcel() {
