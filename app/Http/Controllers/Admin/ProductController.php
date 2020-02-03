@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 // use Illuminate\Support\Facades\Lang;
 use App\Models\User;
-use App\Exports\ProductsExport;
+use App\Excel\Exports\ProductsExport;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Excel\ProductsImport;
+use App\Excel\Imports\ProductsImport;
 use Illuminate\Support\Facades\Cookie;
 use GuzzleHttp\Client;
 // use App\Http\Controllers\Admin\DB;
@@ -14,7 +14,6 @@ use App\Models\Admin\Product;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use \App\Http\Controllers\ControllerName;
 // use App\Helpers\Curl;
 // use App\Helpers\ApiUrl;
 
