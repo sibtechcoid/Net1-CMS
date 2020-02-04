@@ -32,22 +32,14 @@ class ProductsImport implements ToModel, WithHeadingRow, WithValidation
         unset($row['id']);
         if($product !== null ) {
             // Product exists, update existing product
+            unset($row['display_name']);
+            unset($row['validity_date']);
             $product = Product::where('id', $id)->update($row);
         }
         else {
             // Product doesn't exist, insert new product
             // $product = Product::create($row);
-            return new Product([
-                'offer_id' => $row['offer_id'],
-                'offer_name' => $row['offer_name'],
-                'display_name' => $row['display_name'],
-                'description' => $row['description'],
-                'charging_type' => $row['charging_type'],
-                'offer_type' => $row['offer_type'],
-                'service_zone' => $row['service_zone'],
-                'total_price' => $row['total_price'],
-                'validity_date' => $row['validity_date'],
-            ]);
+            return new Product($row);
         }
     }
 
@@ -62,7 +54,7 @@ class ProductsImport implements ToModel, WithHeadingRow, WithValidation
             'offer_type' => 'required',
             'service_zone' => 'required',
             'total_price' => 'numeric',
-            'validity_date' => 'required',
+            'validity_date' => 'required|date',
         ];
     }
 

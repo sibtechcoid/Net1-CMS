@@ -249,11 +249,11 @@ class ProductController extends Controller
             $failures = $exception->failures();
             $error = [];
             foreach ($failures as $failure) {
-                    $error['row'] = $failure->row(); // row that went wrong
-                    $error['attribute'] = $failure->attribute(); // either heading key (if using heading row concern) or column index
+                    $error['row'] .= $failure->row() ."<br>"; // row that went wrong
+                    $error['attribute'] .= $failure->attribute() ."<br>"; // either heading key (if using heading row concern) or column index
                     // dd($failure);
                     foreach ($failure->error() as $value) {
-                        $error['error'] = $value;
+                        $error['error'] .= $value ."<br>";
                     }
                 }
             // dd($error);
