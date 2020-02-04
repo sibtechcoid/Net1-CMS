@@ -16,7 +16,9 @@ class Reward extends Model
 
     public $fillable = [
         'msisdn',
-        'point_reward'
+        'point_reward',
+        'last_update',
+        'user'
     ];
 
     /**
@@ -41,7 +43,7 @@ class Reward extends Model
 
     public function getTableColumns() {
         $column_names = $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
-        $column_names = array_diff($column_names, array('created_at', 'updated_at'));
+        $column_names = array_diff($column_names, array('last_update', 'user', 'created_at', 'updated_at'));
         return $column_names;
     }
 }

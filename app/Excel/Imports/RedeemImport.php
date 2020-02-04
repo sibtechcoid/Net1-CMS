@@ -10,8 +10,10 @@ use Maatwebsite\Excel\Concerns\Importable;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class RewardsImport implements ToModel, WithHeadingRow, WithValidation
+class RedeemImport implements ToModel, WithHeadingRow, WithValidation
 {
+    use Importable;
+    
     /**
     * @param array $row
     *
@@ -28,8 +30,8 @@ class RewardsImport implements ToModel, WithHeadingRow, WithValidation
         $now = Carbon::now();
         $row['last_update'] = $now;
         if($reward !== null ) {
-            // Reward exists, add point reward
-            $row['point_reward'] = ($reward['point_reward'] + $row['point_reward'])*1;
+            // Reward exists, subtract point reward
+            $row['point_reward'] = ($reward['point_reward'] - $row['point_reward'])*1;
             // dd($row);exit;
             $reward = Reward::where('msisdn', $row['msisdn'])->update([
                 'point_reward' => $row['point_reward'], 
@@ -37,18 +39,12 @@ class RewardsImport implements ToModel, WithHeadingRow, WithValidation
                 'last_update' => $row['last_update']
             ]);
         }
-        else {
-            // Reward doesn't exist, insert new reward
-            $row['user'] = 'tester';
-            // dd($row);exit;
-            return new Reward($row);
-        }
     }
 
     public function rules(): array 
     {
         return [
-            'msisdn' => 'required',
+            'msisdn' => 'required|exists:rewards,msisdn',
             'point_reward' => 'required|numeric',
             'description' => 'nullable'
         ];

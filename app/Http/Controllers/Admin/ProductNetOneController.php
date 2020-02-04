@@ -247,8 +247,8 @@ class ProductNetOneController extends InfyOmBaseController
             foreach ($failures as $failure) {
                 $error['row'] = $failure->row(); // row that went wrong
                 $error['attribute'] = $failure->attribute(); // either heading key (if using heading row concern) or column index
-                dd($failure);
-                foreach ($failure->error() as $value) {
+                // dd($failure);
+                foreach ($failure->errors() as $value) {
                     $error['error'] = $value;
                 }
             }

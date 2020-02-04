@@ -39,14 +39,24 @@ RewardsNet1
             <div class="card-body table-responsive">
                 <form method="POST" enctype="multipart/form-data" action="{{ route('admin.rewards.upload') }}">
                     @csrf
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="rewardExcel" name="rewardExcel">
-                            <label class="custom-file-label" for="rewardExcel">Choose a file with one of these extensions (.xls, .xlsx, .xlxt, or .csv)</label>
+                    <div class="border p-2">
+                        <h4>Import</h4>
+                        <div class="input-group mb-3">
+                            <select name="type" class="custom-select form-control" required>
+                            <option value="">Choose type of import...</option>
+                            <option value="reward">Reward</option>
+                            <option value="redeem">Redeem</option>
+                            </select>
                         </div>
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">Import</button>
-                        </div> 
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="rewardExcel" name="rewardExcel" required>
+                                <label class="custom-file-label" for="rewardExcel">Choose a file with one of these extension (.xls, .xlsx, .xlxt, or .csv)</label>
+                            </div>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Import</button>
+                            </div> 
+                        </div>
                     </div>
                 </form>
                  @include('admin.rewards.table')

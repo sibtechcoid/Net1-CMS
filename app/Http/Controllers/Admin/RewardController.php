@@ -16,6 +16,7 @@ use Response;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Excel\Exports\RewardsExport;
 use App\Excel\Imports\RewardsImport;
+use App\Excel\Imports\RedeemImport;
 use Illuminate\Validation\ValidationException;
 
 class RewardController extends InfyOmBaseController
@@ -170,10 +171,17 @@ class RewardController extends InfyOmBaseController
      */
     public function uploadAsExcel(Request $request) {
         $request->validate([
-            'rewardExcel' => 'required'
+            'type' => 'required|string',
+            'rewardExcel' => 'required|mimes:csv,txt,xlsx,xls,xlxt'
         ]);
+        
         try {
-            $import = Excel::import(new RewardsImport, $request->file('rewardExcel'));
+            if($request->type==="reward") {
+                $import = Excel::import(new RewardsImport, $request->file('rewardExcel'));
+            }
+            else if($request->type==="redeem") {
+                $import = Excel::import(new RedeemImport, $request->file('rewardExcel'));
+            }
         }
         catch (\Maatwebsite\Excel\Validators\ValidationException $exception) {
             \DB::rollBack();
@@ -182,8 +190,8 @@ class RewardController extends InfyOmBaseController
             foreach ($failures as $failure) {
                 $error['row'] = $failure->row(); // row that went wrong
                 $error['attribute'] = $failure->attribute(); // either heading key (if using heading row concern) or column index
-                dd($failure);
-                foreach ($failure->error() as $value) {
+                // dd($failure);exit;
+                foreach ($failure->errors() as $value) {
                     $error['error'] = $value;
                 }
             }
