@@ -15,6 +15,10 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use Illuminate\Support\Arr;
+use App\Excel\Exports\ProductsExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Excel\Imports\ProductsImport;
+use Illuminate\Validation\ValidationException;
 
 class ProductNetOneController extends InfyOmBaseController
 {
@@ -224,4 +228,47 @@ class ProductNetOneController extends InfyOmBaseController
             
     }
 
-       }
+    /**
+     * Method to import product list from excel file.xlsx
+     * @author: Roy
+     * 
+     */
+    public function uploadAsExcel(Request $request) {
+        $request->validate([
+            'productExcel' => 'required|mimes:csv,txt,xlsx,xls,xlxt'
+        ]);
+        try {
+            $import = Excel::import(new ProductsImport, $request->file('productExcel'));
+        }
+        catch (\Maatwebsite\Excel\Validators\ValidationException $exception) {
+            \DB::rollBack();
+            $failures = $exception->failures();
+            $error = [];
+            foreach ($failures as $failure) {
+                $error['row'] = $failure->row(); // row that went wrong
+                $error['attribute'] = $failure->attribute(); // either heading key (if using heading row concern) or column index
+                dd($failure);
+                foreach ($failure->error() as $value) {
+                    $error['error'] = $value;
+                }
+            }
+            // dd($error);
+            // exit;
+            return back()->withErrors(['error' => $error]);
+            // echo get_class($exception) ."<br>";
+            // echo $exception->getCode() ."<br>";
+            // echo $exception->getMessage();
+        }
+        return back();
+    }
+
+    /**
+     * Method to export product list from database into downloadable excel file.xlsx
+     * @author: Roy
+     * 
+     */
+    public function downloadAsExcel() {
+        return Excel::download(new ProductsExport, 'products.xlsx');
+    }
+
+}

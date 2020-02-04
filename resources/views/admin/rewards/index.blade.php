@@ -31,11 +31,24 @@ RewardsNet1
                     RewardsNet1 List
                 </h4>
                 <div class="float-right">
+                    <a class="btn btn-info" href="{{route('admin.rewards.download')}}">Export as Excel</a>
                     <a href="{{ route('admin.rewards.create') }}" class="btn btn-sm btn-default"><span class="fa fa-plus"></span> @lang('button.create')</a>
                 </div>
             </div>
             <br />
             <div class="card-body table-responsive">
+                <form method="POST" enctype="multipart/form-data" action="{{ route('admin.rewards.upload') }}">
+                    @csrf
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="rewardExcel" name="rewardExcel">
+                            <label class="custom-file-label" for="rewardExcel">Choose a file with one of these extensions (.xls, .xlsx, .xlxt, or .csv)</label>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Import</button>
+                        </div> 
+                    </div>
+                </form>
                  @include('admin.rewards.table')
                  
             </div>

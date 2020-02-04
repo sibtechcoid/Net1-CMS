@@ -70,28 +70,37 @@
  <script type="text/javascript" src="{{ asset('vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
 
     <script>
-        $('#productNetOnes-table').DataTable({
-                      responsive: true,
-                      pageLength: 10
-                  });
-                  $('#productNetOnes-table').on( 'page.dt', function () {
-                     setTimeout(function(){
-                           $('.livicon').updateLivicon();
-                     },500);
-                  } );
-                  $('#productNetOnes-table').on( 'length.dt', function ( e, settings, len ) {
-                     setTimeout(function(){
-                            $('.livicon').updateLivicon();
-                     },500);
-                  } );
+    $(document).ready(function() {
+        $('#productExcel').on('change',function(){
+            //get the file name
+            var fileName = $(this).val();
+            //replace the "Choose a file" label
+            $(this).next('.custom-file-label').html(fileName);
+        });
 
-                  $('#delete_confirm').on('show.bs.modal', function (event) {
-                      var button = $(event.relatedTarget)
-                       var $recipient = button.data('id');
-                      var modal = $(this);
-                      modal.find('.modal-footer a').prop("href",$recipient);
-                  })
+        $('#productNetOnes-table').DataTable({
+            responsive: true,
+            pageLength: 10
+        });
+        $('#productNetOnes-table').on( 'page.dt', function () {
+            setTimeout(function(){
+                $('.livicon').updateLivicon();
+            },500);
+        } );
+        $('#productNetOnes-table').on( 'length.dt', function ( e, settings, len ) {
+            setTimeout(function(){
+                $('.livicon').updateLivicon();
+            },500);
+        } );
+
+        $('#delete_confirm').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var $recipient = button.data('id');
+            var modal = $(this);
+            modal.find('.modal-footer a').prop("href",$recipient);
+        })
+    });
+        
 
        </script>
-
 @stop

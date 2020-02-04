@@ -38,4 +38,10 @@ class Reward extends Model
     public static $rules = [
         
     ];
+
+    public function getTableColumns() {
+        $column_names = $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+        $column_names = array_diff($column_names, array('created_at', 'updated_at'));
+        return $column_names;
+    }
 }

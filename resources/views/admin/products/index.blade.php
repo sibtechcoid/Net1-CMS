@@ -64,7 +64,7 @@ Products
                             </div>
                         </form>
                     </div>
-                <a class="btn btn-primary" href="{{route('admin.products.download')}}" target="_blank">Download as Excel</a>
+                        <a class="btn btn-primary" href="{{route('admin.products.download')}}" target="_blank">Export as Excel</a>
                     @include('admin.products.table')
                 </div>
             </div>

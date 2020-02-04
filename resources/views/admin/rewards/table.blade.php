@@ -60,28 +60,35 @@
  <script type="text/javascript" src="{{ asset('vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
 
     <script>
-        $('#rewards-table').DataTable({
-                      responsive: true,
-                      pageLength: 10
-                  });
-                  $('#rewards-table').on( 'page.dt', function () {
-                     setTimeout(function(){
-                           $('.livicon').updateLivicon();
-                     },500);
-                  } );
-                  $('#rewards-table').on( 'length.dt', function ( e, settings, len ) {
-                     setTimeout(function(){
-                            $('.livicon').updateLivicon();
-                     },500);
-                  } );
+        $(document).ready(function() {
+            $('#rewardExcel').on('change',function(){
+                //get the file name
+                var fileName = $(this).val();
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(fileName);
+            });
+            $('#rewards-table').DataTable({
+                responsive: true,
+                pageLength: 10
+            });
+            $('#rewards-table').on( 'page.dt', function () {
+                setTimeout(function(){
+                    $('.livicon').updateLivicon();
+                },500);
+            } );
+            $('#rewards-table').on( 'length.dt', function ( e, settings, len ) {
+                setTimeout(function(){
+                    $('.livicon').updateLivicon();
+                },500);
+            } );
 
-                  $('#delete_confirm').on('show.bs.modal', function (event) {
-                      var button = $(event.relatedTarget)
-                       var $recipient = button.data('id');
-                      var modal = $(this);
-                      modal.find('.modal-footer a').prop("href",$recipient);
-                  })
-
+            $('#delete_confirm').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget)
+                var $recipient = button.data('id');
+                var modal = $(this);
+                modal.find('.modal-footer a').prop("href",$recipient);
+            })
+        });
        </script>
 
 @stop

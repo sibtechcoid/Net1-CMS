@@ -2,22 +2,22 @@
 
 namespace App\Excel\Exports;
 
-use App\Models\ProductNetOne;
+use App\Models\Reward;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ProductsExport implements FromCollection, WithHeadings
+class RewardsExport implements FromCollection, WithHeadings
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return ProductNetOne::all();
+        return Reward::all();
     }
 
     public function headings(): array {
-        $product = new ProductNetOne;
-        return [$product->getTableColumns()];
+        $reward = new Reward;
+        return [$reward->getTableColumns()];
     }
 }

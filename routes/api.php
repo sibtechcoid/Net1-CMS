@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::post('productlist','Api\ProductNetOneMobileController@products');
 Route::post('deviceslist','Admin\DevicesNetOneController@Consume_Devices');
 Route::post('bannerslist','Api\BannersNetOneApiController@Index');
+
+// api for download product as excel(export product in excel)
+Route::get('products/download', 'Admin\ProductNetOneController@downloadAsExcel')->name('admin.products.download')->middleware('auth');
+Route::get('rewards/download', 'Admin\RewardController@downloadAsExcel')->name('admin.rewards.download')->middleware('auth');

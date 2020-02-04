@@ -13,6 +13,10 @@ use App\Models\Reward;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Excel\Exports\RewardsExport;
+use App\Excel\Imports\RewardsImport;
+use Illuminate\Validation\ValidationException;
 
 class RewardController extends InfyOmBaseController
 {
@@ -158,5 +162,48 @@ class RewardController extends InfyOmBaseController
            return redirect(route('admin.rewards.index'))->with('success', Lang::get('message.success.delete'));
 
        }
+
+    /**
+     * Method to import reward list from excel file.xlsx
+     * @author: Roy
+     * 
+     */
+    public function uploadAsExcel(Request $request) {
+        $request->validate([
+            'rewardExcel' => 'required'
+        ]);
+        try {
+            $import = Excel::import(new RewardsImport, $request->file('rewardExcel'));
+        }
+        catch (\Maatwebsite\Excel\Validators\ValidationException $exception) {
+            \DB::rollBack();
+            $failures = $exception->failures();
+            $error = [];
+            foreach ($failures as $failure) {
+                $error['row'] = $failure->row(); // row that went wrong
+                $error['attribute'] = $failure->attribute(); // either heading key (if using heading row concern) or column index
+                dd($failure);
+                foreach ($failure->error() as $value) {
+                    $error['error'] = $value;
+                }
+            }
+            // dd($error);
+            // exit;
+            return back()->withErrors(['error' => $error]);
+            // echo get_class($exception) ."<br>";
+            // echo $exception->getCode() ."<br>";
+            // echo $exception->getMessage();
+        }
+        return back();
+    }
+
+    /**
+     * Method to export reward list from database into downloadable excel file.xlsx
+     * @author: Roy
+     * 
+     */
+    public function downloadAsExcel() {
+        return Excel::download(new RewardsExport, 'rewards.xlsx');
+    }
 
 }
