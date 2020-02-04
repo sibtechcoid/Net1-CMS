@@ -11,7 +11,7 @@ require_once 'web_builder.php';
 |
 */
 
-// Route::pattern('slug', '[a-z0-9- _]+');
+Route::pattern('slug', '[a-z0-9- _]+');
 
 Route::group(
     ['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'],
@@ -69,42 +69,38 @@ Route::group(
 );
 
 
-// Route::group(
-//     ['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'admin.'],
-//     function () {
-//         //products
-//         Route::get('admin.products','ProductController@index');
-//         Route::get('admin.products.show','ProductController@show');
-//         Route::get('admin.products.edit','ProductController@edit');
-//         Route::get('admin.products.confirm-delete','ProductController@confirm-delete');
-//         Route::get('admin.products.delete','ProductController@delete');
-//          Route::get('admin/products/store','ProductController@store');
-//         // GUI Crud Generator
-//         Route::get('generator_builder', 'JoshController@builder')->name('generator_builder');
-//         Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate');
-//         Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate');
-//         // Model checking
-//         Route::post('modelCheck', 'ModelcheckController@modelCheck');
+Route::group(
+    ['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'admin.'],
+    function () {
+        //products
+        // Route::get('admin.products','ProductController@index');
+        //  Route::get('admin/products/store','ProductController@store');
+        // GUI Crud Generator
+        Route::get('generator_builder', 'JoshController@builder')->name('generator_builder');
+        Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate');
+        Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate');
+        // Model checking
+        Route::post('modelCheck', 'ModelcheckController@modelCheck');
 
 
-//         Route::get('index1', 'JoshController@showHome');
-//         // crop demo
-//         Route::post('crop_demo', 'JoshController@cropDemo')->name('crop_demo');
-//         //Log viewer routes
-//         Route::get('log_viewers', 'Admin\LogViewerController@index')->name('log-viewers');
-//         Route::get('log_viewers/logs', 'Admin\LogViewerController@listLogs')->name('log_viewers.logs');
-//         Route::delete('log_viewers/logs/delete', 'Admin\LogViewerController@delete')->name('log_viewers.logs.delete');
-//         Route::get('log_viewers/logs/{date}', 'Admin\LogViewerController@show')->name('log_viewers.logs.show');
-//         Route::get('log_viewers/logs/{date}/download', 'Admin\LogViewerController@download')->name('log_viewers.logs.download');
-//         Route::get('log_viewers/logs/{date}/{level}', 'Admin\LogViewerController@showByLevel')->name('log_viewers.logs.filter');
-//         Route::get('log_viewers/logs/{date}/{level}/search', 'Admin\LogViewerController@search')->name('log_viewers.logs.search');
-//         Route::get('log_viewers/logcheck', 'Admin\LogViewerController@logCheck')->name('log-viewers.logcheck');
-//         //end Log viewer
-//         // Activity log
-//         Route::get('activity_log/data', 'JoshController@activityLogData')->name('activity_log.data');
-//         //    Route::get('/', 'JoshController@index')->name('index');
-//     }
-// );
+        Route::get('index1', 'JoshController@showHome');
+        // crop demo
+        Route::post('crop_demo', 'JoshController@cropDemo')->name('crop_demo');
+        //Log viewer routes
+        Route::get('log_viewers', 'Admin\LogViewerController@index')->name('log-viewers');
+        Route::get('log_viewers/logs', 'Admin\LogViewerController@listLogs')->name('log_viewers.logs');
+        Route::delete('log_viewers/logs/delete', 'Admin\LogViewerController@delete')->name('log_viewers.logs.delete');
+        Route::get('log_viewers/logs/{date}', 'Admin\LogViewerController@show')->name('log_viewers.logs.show');
+        Route::get('log_viewers/logs/{date}/download', 'Admin\LogViewerController@download')->name('log_viewers.logs.download');
+        Route::get('log_viewers/logs/{date}/{level}', 'Admin\LogViewerController@showByLevel')->name('log_viewers.logs.filter');
+        Route::get('log_viewers/logs/{date}/{level}/search', 'Admin\LogViewerController@search')->name('log_viewers.logs.search');
+        Route::get('log_viewers/logcheck', 'Admin\LogViewerController@logCheck')->name('log-viewers.logcheck');
+        //end Log viewer
+        // Activity log
+        Route::get('activity_log/data', 'JoshController@activityLogData')->name('activity_log.data');
+        //    Route::get('/', 'JoshController@index')->name('index');
+    }
+);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin' , 'as' => 'admin.'], function() {
     // Dashboard / Index
@@ -176,28 +172,28 @@ Route::group(
         );
         Route::resource('roles', 'RolesController');
 
-        // /*routes for blog*/
-        // Route::group(
-        //     ['prefix' => 'blog'],
-        //     function () {
-        //         Route::get('{blog}/delete', 'BlogController@destroy')->name('blog.delete');
-        //         Route::get('{blog}/confirm-delete', 'BlogController@getModalDelete')->name('blog.confirm-delete');
-        //         Route::get('{blog}/restore', 'BlogController@restore')->name('blog.restore');
-        //         Route::post('{blog}/storecomment', 'BlogController@storeComment')->name('storeComment');
-        //     }
-        // );
-        // Route::resource('blog', 'BlogController');
+        /*routes for blog*/
+        Route::group(
+            ['prefix' => 'blog'],
+            function () {
+                Route::get('{blog}/delete', 'BlogController@destroy')->name('blog.delete');
+                Route::get('{blog}/confirm-delete', 'BlogController@getModalDelete')->name('blog.confirm-delete');
+                Route::get('{blog}/restore', 'BlogController@restore')->name('blog.restore');
+                Route::post('{blog}/storecomment', 'BlogController@storeComment')->name('storeComment');
+            }
+        );
+        Route::resource('blog', 'BlogController');
 
-        // /*routes for blog category*/
-        // Route::group(
-        //     ['prefix' => 'blogcategory'],
-        //     function () {
-        //         Route::get('{blogCategory}/delete', 'BlogCategoryController@destroy')->name('blogcategory.delete');
-        //         Route::get('{blogCategory}/confirm-delete', 'BlogCategoryController@getModalDelete')->name('blogcategory.confirm-delete');
-        //         Route::get('{blogCategory}/restore', 'BlogCategoryController@getRestore')->name('blogcategory.restore');
-        //     }
-        // );
-        // Route::resource('blogcategory', 'BlogCategoryController');
+        /*routes for blog category*/
+        Route::group(
+            ['prefix' => 'blogcategory'],
+            function () {
+                Route::get('{blogCategory}/delete', 'BlogCategoryController@destroy')->name('blogcategory.delete');
+                Route::get('{blogCategory}/confirm-delete', 'BlogCategoryController@getModalDelete')->name('blogcategory.confirm-delete');
+                Route::get('{blogCategory}/restore', 'BlogCategoryController@getRestore')->name('blogcategory.restore');
+            }
+        );
+        Route::resource('blogcategory', 'BlogCategoryController');
         /*routes for file*/
         Route::group(
             ['prefix' => 'file'],
@@ -344,10 +340,10 @@ Route::get(
     }]
 );
 
-// Route::get('blog', 'BlogController@index')->name('blog');
-// Route::get('blog/{slug}/tag', 'BlogController@getBlogTag');
-// Route::get('blogitem/{slug?}', 'BlogController@getBlog');
-// Route::post('blogitem/{blog}/comment', 'BlogController@storeComment');
+Route::get('blog', 'BlogController@index')->name('blog');
+Route::get('blog/{slug}/tag', 'BlogController@getBlogTag');
+Route::get('blogitem/{slug?}', 'BlogController@getBlog');
+Route::post('blogitem/{blog}/comment', 'BlogController@storeComment');
 
 //news
 Route::get('news', 'NewsController@index')->name('news');

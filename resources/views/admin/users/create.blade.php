@@ -58,7 +58,7 @@
                                 <ul>
                                     <li class="nav-item"><a href="#tab1" data-toggle="tab" class="nav-link">User Profile</a></li>
                                     <li class="nav-item"><a href="#tab2" data-toggle="tab" class="nav-link ml-2">Bio</a></li>
-                                    <li class="nav-item"><a href="#tab3" data-toggle="tab" class="nav-link ml-2">Address</a></li>
+                                    {{-- <li class="nav-item"><a href="#tab3" data-toggle="tab" class="nav-link ml-2">Address</a></li> --}}
                                     <li class="nav-item"><a href="#tab4" data-toggle="tab" class="nav-link ml-2">User Role</a></li>
                                 </ul>
                                 <div class="tab-content">
