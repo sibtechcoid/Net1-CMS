@@ -55,8 +55,8 @@ RewardsNet1
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="rewardExcel" name="rewardExcel"
                                             required>
-                                        <label class="custom-file-label" for="rewardExcel">Choose a file with one of
-                                            these extensions (.xls, .xlsx, .xlxt, or .csv)</label>
+                                        <label class="custom-file-label"
+                                            for="rewardExcel">{{ __('excel/form.file-upload-info') }}</label>
                                     </div>
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="submit">Import</button>
