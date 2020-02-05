@@ -190,7 +190,7 @@ class RewardController extends InfyOmBaseController
             foreach ($failures as $failure) {
                 $error['row'] = $failure->row(); // row that went wrong
                 $error['attribute'] = $failure->attribute(); // either heading key (if using heading row concern) or column index
-                // dd($failure);exit;
+                dd($failure);exit;
                 foreach ($failure->errors() as $value) {
                     $error['error'] = $value;
                 }

@@ -27,7 +27,7 @@ class Reward extends Model
      * @var array
      */
     protected $casts = [
-        'msisdn' => 'integer',
+        'msisdn' => 'string',
         'point_reward' => 'integer',
         'user' => 'string'
     ];

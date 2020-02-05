@@ -21,6 +21,7 @@ class RedeemImport implements ToModel, WithHeadingRow, WithValidation
     */
     public function model(array $row)
     {
+        $row['msisdn'] = preg_replace('/[^0-9]/','', $row['msisdn']);
         $reward = Reward::where('msisdn', $row['msisdn'])->first();
         // dd($reward);exit;
         // $id = $row['id_reward'];
@@ -28,10 +29,16 @@ class RedeemImport implements ToModel, WithHeadingRow, WithValidation
         // $username = auth()->user()->first_name + auth()->user()->last_name;
         $username = "tester";
         $now = Carbon::now();
+        $row['point_reward'] = abs($row['point_reward']);
         $row['last_update'] = $now;
         if($reward !== null ) {
             // Reward exists, subtract point reward
-            $row['point_reward'] = ($reward['point_reward'] - $row['point_reward'])*1;
+            if($reward['point_reward'] >= $row['point_reward']) {
+                $row['point_reward'] = ($reward['point_reward'] - $row['point_reward'])*1;
+            }
+            else {
+                $row['point_reward'] = $reward['point_reward'];
+            }
             // dd($row);exit;
             $reward = Reward::where('msisdn', $row['msisdn'])->update([
                 'point_reward' => $row['point_reward'], 
