@@ -186,21 +186,8 @@ class RewardController extends InfyOmBaseController
         catch (\Maatwebsite\Excel\Validators\ValidationException $exception) {
             \DB::rollBack();
             $failures = $exception->failures();
-            $error = [];
-            foreach ($failures as $failure) {
-                $error['row'] = $failure->row(); // row that went wrong
-                $error['attribute'] = $failure->attribute(); // either heading key (if using heading row concern) or column index
-                dd($failure);exit;
-                foreach ($failure->errors() as $value) {
-                    $error['error'] = $value;
-                }
-            }
-            // dd($error);
-            // exit;
-            return back()->withErrors(['error' => $error]);
-            // echo get_class($exception) ."<br>";
-            // echo $exception->getCode() ."<br>";
-            // echo $exception->getMessage();
+            // dd($failures);exit;
+            return redirect(route('admin.rewards.index'))->with('error', $failures[0]);
         }
         return back();
     }

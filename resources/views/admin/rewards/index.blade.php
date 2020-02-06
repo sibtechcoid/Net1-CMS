@@ -47,8 +47,8 @@ RewardsNet1
                                 <div class="input-group mb-3">
                                     <select name="type" class="custom-select form-control" required>
                                         <option value="">Choose type of import...</option>
-                                        <option value="reward">Reward</option>
-                                        <option value="redeem">Redeem</option>
+                                        <option value="reward">Reward (+ point)</option>
+                                        <option value="redeem">Redeem (- point)</option>
                                     </select>
                                 </div>
                                 <div class="input-group">

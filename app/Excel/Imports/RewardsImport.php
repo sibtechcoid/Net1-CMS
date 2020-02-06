@@ -4,6 +4,8 @@ namespace App\Excel\Imports;
 
 use App\Models\Reward;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\Importable;
@@ -22,18 +24,6 @@ class RewardsImport implements ToModel, WithHeadingRow, WithValidation
     public function model(array $row)
     {
         $row['msisdn'] = preg_replace('/[^0-9]/','', $row['msisdn']);
-        // dd($row);exit;
-        if(!ctype_digit($row['msisdn'])) {
-            $failures = [
-                'row' => ++$this->row,
-                'attribute' => 'msisdn',
-                'errors' => [
-                    'The msisdn must be a number.'
-                ],
-                'values' => $row
-            ];
-            throw new \Maatwebsite\Excel\Validators\ValidationException(null, $failures);
-        }
         $reward = Reward::where('msisdn', $row['msisdn'])->first();
         // dd($reward);exit;
         // $id = $row['id_reward'];
@@ -64,7 +54,7 @@ class RewardsImport implements ToModel, WithHeadingRow, WithValidation
     public function rules(): array 
     {
         return [
-            'msisdn' => 'required',
+            'msisdn' => 'required|regex:/^[+]+[0-9]+$/',
             'point_reward' => 'required|numeric',
             'description' => 'nullable'
         ];
