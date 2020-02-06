@@ -13,8 +13,9 @@
             @foreach($bannerNetones as $bannerNetone)
             <tr>
                 <td>{!! $bannerNetone->banner_name !!}</td>
-                <td><img src="{{ route('admin.bannerNetones.displayImage',$bannerNetone->banner_picture) }}"
-                        alt="no image" title=""></td>
+                <td><img src="{{ Storage::url($bannerNetone->banner_picture) }}" alt="no image" title="" width="300"
+                        height="200">
+                </td>
                 <td>{!! $bannerNetone->banner_url !!}</td>
                 <td>{!! $bannerNetone->banner_order !!}</td>
                 <td>

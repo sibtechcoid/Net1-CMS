@@ -106,7 +106,6 @@ Route::get('bannerNetones/{id}/delete', array('as' => 'bannerNetones.delete', 'u
 Route::get('bannerNetones/{id}/confirm-delete', array('as' => 'bannerNetones.confirm-delete', 'uses' => 'BannerNetoneController@getModalDelete'));
 Route::get('bannerNetones/{bannerNetones}', ['as'=> 'bannerNetones.show', 'uses' => 'BannerNetoneController@show']);
 Route::get('bannerNetones/{bannerNetones}/edit', ['as'=> 'bannerNetones.edit', 'uses' => 'BannerNetoneController@edit']);
-Route::get('bannerNetones/image/{filename}', ['as'=> 'bannerNetones.displayImage', 'uses' => 'BannerNetoneController@displayImage']);
 });
 
 

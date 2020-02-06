@@ -1,14 +1,14 @@
 <!-- Banner Name Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('banner_name', 'Banner Name:') !!}
-    {!! Form::text('banner_name', null, ['class' => 'form-control']) !!}
+    <input class="form-control" name="banner_name" type="text" id="banner_name" required>
 </div>
 
 <!-- Banner Picture Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('banner_picture', 'Banner Picture:') !!}
     <div class="custom-file">
-        <input type="file" name="banner_picture" id="banner_picture" class="custom-file-input">
+        <input type="file" name="banner_picture" id="banner_picture" class="custom-file-input" required>
         <label class="custom-file-label" for="customFile">Choose a picture</label>
     </div>
 </div>

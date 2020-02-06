@@ -68,7 +68,7 @@ class BannerNetoneController extends InfyOmBaseController
         try {
             $banner = new BannerNetone;
             $banner->banner_name = $request->banner_name;
-            $path = $request->file('banner_picture')->store('banners');
+            $path = $request->file('banner_picture')->store('public/banners');
             $banner->banner_picture = $path;
             $banner->banner_url = $request->banner_url;
             $banner->banner_order = $request->banner_order;
@@ -168,16 +168,15 @@ class BannerNetoneController extends InfyOmBaseController
 
     public function getDelete($id = null)
     {
-        $sample = BannerNetone::destroy($id);
+        $banner = BannerNetone::find($id);
+        $deleted_picture = Storage::delete($banner->banner_picture);
+        if($deleted_picture) {
+            $banner->destroy($id);
+        }
 
         // Redirect to the group management page
         return redirect(route('admin.bannerNetones.index'))->with('success', Lang::get('message.success.delete'));
 
-    }
-
-    public function displayImage($filename) {
-        $image = storage_path('app/banners/'.$filename);
-        return response()->file($image);
     }
 
 }
