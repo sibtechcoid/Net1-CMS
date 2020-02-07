@@ -15,7 +15,7 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 class RewardsImport implements ToModel, WithHeadingRow, WithValidation
 {
     use Importable;
-    private $row = 0;
+    
     /**
     * @param array $row
     *
@@ -53,8 +53,9 @@ class RewardsImport implements ToModel, WithHeadingRow, WithValidation
 
     public function rules(): array 
     {
+        // dd($this);exit;
         return [
-            'msisdn' => 'required|regex:/^[+]+[0-9]+$/',
+            'msisdn' => 'required|regex:/^[+]?+[0-9]+$/',
             'point_reward' => 'required|numeric',
             'description' => 'nullable'
         ];

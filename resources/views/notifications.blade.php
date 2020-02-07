@@ -29,6 +29,16 @@
         {{ $key .' -> '. $item .', '}}
         @endforeach
     </p>
+    @elseif (is_array($message))
+    {{-- {{dd($message)}} --}}
+    <strong>Error:</strong>
+    <p>
+        Row: {{ $message['row'] }} <br>
+        Attribute: {{ $message['attribute'] }} <br>
+        Message: {{ $message['error'] }} <br>
+        Values: <br>
+        {{ $message['values'] }}
+    </p>
     @else
     <strong>Error:</strong> {{ $message }}
     @endif
