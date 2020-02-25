@@ -14,10 +14,10 @@
 </div>
 
 <!-- Banner Url Field -->
-{{-- <div class="form-group col-sm-12">
+<div class="form-group col-sm-12">
     {!! Form::label('banner_url', 'Banner Url:') !!}
     {!! Form::text('banner_url', null, ['class' => 'form-control']) !!}
-</div> --}}
+</div>
 
 <!-- Banner Order Field -->
 <div class="form-group col-sm-12">
