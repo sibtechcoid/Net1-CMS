@@ -15,10 +15,9 @@ class CreateRewardsTable extends Migration
     {
         Schema::create('Rewards', function (Blueprint $table) {
             $table->increments('id_reward');
-            $table->string('msisdn', 50)->nullable();
+            $table->integer('msisdn')->nullable();
             $table->integer('point_reward')->nullable();
-            $table->string('description')->nullable();
-            $table->dateTime('last_update')->nullable();
+            $table->date('last_update')->nullable();
             $table->string('user')->nullable();
             $table->timestamps();
         });

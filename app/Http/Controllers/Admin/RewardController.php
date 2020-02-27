@@ -13,11 +13,6 @@ use App\Models\Reward;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Excel\Exports\RewardsExport;
-use App\Excel\Imports\RewardsImport;
-use App\Excel\Imports\RedeemImport;
-use Illuminate\Validation\ValidationException;
 
 class RewardController extends InfyOmBaseController
 {
@@ -163,42 +158,5 @@ class RewardController extends InfyOmBaseController
            return redirect(route('admin.rewards.index'))->with('success', Lang::get('message.success.delete'));
 
        }
-
-    /**
-     * Method to import reward list from excel file.xlsx
-     * @author: Roy
-     * 
-     */
-    public function uploadAsExcel(Request $request) {
-        $request->validate([
-            'type' => 'required|string',
-            'rewardExcel' => 'required|mimes:csv,txt,xlsx,xls,xlxt'
-        ]);
-        
-        try {
-            if($request->type==="reward") {
-                $import = Excel::import(new RewardsImport, $request->file('rewardExcel'));
-            }
-            else if($request->type==="redeem") {
-                $import = Excel::import(new RedeemImport, $request->file('rewardExcel'));
-            }
-        }
-        catch (\Maatwebsite\Excel\Validators\ValidationException $exception) {
-            \DB::rollBack();
-            $failures = $exception->failures();
-            // dd($failures);exit;
-            return redirect(route('admin.rewards.index'))->with('error', $failures[0]);
-        }
-        return back();
-    }
-
-    /**
-     * Method to export reward list from database into downloadable excel file.xlsx
-     * @author: Roy
-     * 
-     */
-    public function downloadAsExcel() {
-        return Excel::download(new RewardsExport, 'rewards.xlsx');
-    }
 
 }

@@ -172,28 +172,28 @@ Route::group(
         );
         Route::resource('roles', 'RolesController');
 
-        // /*routes for blog*/
-        // Route::group(
-        //     ['prefix' => 'blog'],
-        //     function () {
-        //         Route::get('{blog}/delete', 'BlogController@destroy')->name('blog.delete');
-        //         Route::get('{blog}/confirm-delete', 'BlogController@getModalDelete')->name('blog.confirm-delete');
-        //         Route::get('{blog}/restore', 'BlogController@restore')->name('blog.restore');
-        //         Route::post('{blog}/storecomment', 'BlogController@storeComment')->name('storeComment');
-        //     }
-        // );
-        // Route::resource('blog', 'BlogController');
+        /*routes for blog*/
+        Route::group(
+            ['prefix' => 'blog'],
+            function () {
+                Route::get('{blog}/delete', 'BlogController@destroy')->name('blog.delete');
+                Route::get('{blog}/confirm-delete', 'BlogController@getModalDelete')->name('blog.confirm-delete');
+                Route::get('{blog}/restore', 'BlogController@restore')->name('blog.restore');
+                Route::post('{blog}/storecomment', 'BlogController@storeComment')->name('storeComment');
+            }
+        );
+        Route::resource('blog', 'BlogController');
 
-        // /*routes for blog category*/
-        // Route::group(
-        //     ['prefix' => 'blogcategory'],
-        //     function () {
-        //         Route::get('{blogCategory}/delete', 'BlogCategoryController@destroy')->name('blogcategory.delete');
-        //         Route::get('{blogCategory}/confirm-delete', 'BlogCategoryController@getModalDelete')->name('blogcategory.confirm-delete');
-        //         Route::get('{blogCategory}/restore', 'BlogCategoryController@getRestore')->name('blogcategory.restore');
-        //     }
-        // );
-        // Route::resource('blogcategory', 'BlogCategoryController');
+        /*routes for blog category*/
+        Route::group(
+            ['prefix' => 'blogcategory'],
+            function () {
+                Route::get('{blogCategory}/delete', 'BlogCategoryController@destroy')->name('blogcategory.delete');
+                Route::get('{blogCategory}/confirm-delete', 'BlogCategoryController@getModalDelete')->name('blogcategory.confirm-delete');
+                Route::get('{blogCategory}/restore', 'BlogCategoryController@getRestore')->name('blogcategory.restore');
+            }
+        );
+        Route::resource('blogcategory', 'BlogCategoryController');
         /*routes for file*/
         Route::group(
             ['prefix' => 'file'],
@@ -340,10 +340,10 @@ Route::get(
     }]
 );
 
-// Route::get('blog', 'BlogController@index')->name('blog');
-// Route::get('blog/{slug}/tag', 'BlogController@getBlogTag');
-// Route::get('blogitem/{slug?}', 'BlogController@getBlog');
-// Route::post('blogitem/{blog}/comment', 'BlogController@storeComment');
+Route::get('blog', 'BlogController@index')->name('blog');
+Route::get('blog/{slug}/tag', 'BlogController@getBlogTag');
+Route::get('blogitem/{slug?}', 'BlogController@getBlog');
+Route::post('blogitem/{blog}/comment', 'BlogController@storeComment');
 
 //news
 Route::get('news', 'NewsController@index')->name('news');

@@ -9,7 +9,6 @@ use App\Repositories\BannerNetoneRepository;
 use App\Http\Controllers\AppBaseController as InfyOmBaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
-use Illuminate\Support\Facades\Storage;
 use App\Models\BannerNetone;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -57,26 +56,11 @@ class BannerNetoneController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateBannerNetoneRequest $request)
     {
-        $request->validate([
-            'banner_name' => 'required',
-            'banner_picture' => 'required|image',
-            'banner_order' => 'numeric'
-        ]);
+        $input = $request->all();
 
-        try {
-            $banner = new BannerNetone;
-            $banner->banner_name = $request->banner_name;
-            $path = $request->file('banner_picture')->store('public/banners');
-            $banner->banner_picture = $path;
-            $banner->banner_url = $request->banner_url;
-            $banner->banner_order = $request->banner_order;
-    
-            $banner->save();
-        } catch (\Exception $exception) {
-            dd($exception);exit;
-        }
+        $bannerNetone = $this->bannerNetoneRepository->create($input);
 
         Flash::success('BannerNetone saved successfully.');
 
@@ -157,26 +141,22 @@ class BannerNetoneController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function getModalDelete($id = null)
-    {
-        $error = '';
-        $model = '';
-        $confirm_route =  route('admin.bannerNetones.delete',['id'=>$id]);
-        return View('admin.layouts/modal_confirmation', compact('error','model', 'confirm_route'));
+      public function getModalDelete($id = null)
+      {
+          $error = '';
+          $model = '';
+          $confirm_route =  route('admin.bannerNetones.delete',['id'=>$id]);
+          return View('admin.layouts/modal_confirmation', compact('error','model', 'confirm_route'));
 
-    }
+      }
 
-    public function getDelete($id = null)
-    {
-        $banner = BannerNetone::find($id);
-        $deleted_picture = Storage::delete($banner->banner_picture);
-        if($deleted_picture) {
-            $banner->destroy($id);
-        }
+       public function getDelete($id = null)
+       {
+           $sample = BannerNetone::destroy($id);
 
-        // Redirect to the group management page
-        return redirect(route('admin.bannerNetones.index'))->with('success', Lang::get('message.success.delete'));
+           // Redirect to the group management page
+           return redirect(route('admin.bannerNetones.index'))->with('success', Lang::get('message.success.delete'));
 
-    }
+       }
 
 }

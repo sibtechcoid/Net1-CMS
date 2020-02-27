@@ -16,9 +16,7 @@ class Reward extends Model
 
     public $fillable = [
         'msisdn',
-        'point_reward',
-        'last_update',
-        'user'
+        'point_reward'
     ];
 
     /**
@@ -27,7 +25,7 @@ class Reward extends Model
      * @var array
      */
     protected $casts = [
-        'msisdn' => 'string',
+        'msisdn' => 'integer',
         'point_reward' => 'integer',
         'user' => 'string'
     ];
@@ -40,10 +38,4 @@ class Reward extends Model
     public static $rules = [
         
     ];
-
-    public function getTableColumns() {
-        $column_names = $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
-        $column_names = array_diff($column_names, array('last_update', 'user', 'created_at', 'updated_at'));
-        return $column_names;
-    }
 }

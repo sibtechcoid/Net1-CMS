@@ -15,8 +15,7 @@
 <!-- Banner Picture Field -->
 <div class="form-group">
     {!! Form::label('banner_picture', 'Banner Picture:') !!}
-    <p><img src="{{ Storage::url($bannerNetone->banner_picture) }}" alt="no image" title="" width="300" height="200">
-    </p>
+    <p>{!! $bannerNetone->banner_picture !!}</p>
     <hr>
 </div>
 
@@ -33,3 +32,4 @@
     <p>{!! $bannerNetone->banner_order !!}</p>
     <hr>
 </div>
+

@@ -1,23 +1,20 @@
 <!-- Banner Name Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('banner_name', 'Banner Name:') !!}
-    <input class="form-control" name="banner_name" type="text" id="banner_name" required>
+    {!! Form::text('banner_name', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Banner Picture Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('banner_picture', 'Banner Picture:') !!}
-    <div class="custom-file">
-        <input type="file" name="banner_picture" id="banner_picture" class="custom-file-input" required>
-        <label class="custom-file-label" for="customFile">Choose a picture</label>
-    </div>
+    {!! Form::text('banner_picture', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Banner Url Field -->
-{{-- <div class="form-group col-sm-12">
+<div class="form-group col-sm-12">
     {!! Form::label('banner_url', 'Banner Url:') !!}
     {!! Form::text('banner_url', null, ['class' => 'form-control']) !!}
-</div> --}}
+</div>
 
 <!-- Banner Order Field -->
 <div class="form-group col-sm-12">

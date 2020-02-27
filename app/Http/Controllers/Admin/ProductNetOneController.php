@@ -15,10 +15,6 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use Illuminate\Support\Arr;
-use App\Excel\Exports\ProductsExport;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Excel\Imports\ProductsImport;
-use Illuminate\Validation\ValidationException;
 
 class ProductNetOneController extends InfyOmBaseController
 {
@@ -228,34 +224,4 @@ class ProductNetOneController extends InfyOmBaseController
             
     }
 
-    /**
-     * Method to import product list from excel file.xlsx
-     * @author: Roy
-     * 
-     */
-    public function uploadAsExcel(Request $request) {
-        $request->validate([
-            'productExcel' => 'required|mimes:csv,txt,xlsx,xls,xlxt'
-        ]);
-        try {
-            $import = Excel::import(new ProductsImport, $request->file('productExcel'));
-        }
-        catch (\Maatwebsite\Excel\Validators\ValidationException $exception) {
-            \DB::rollBack();
-            $failures = $exception->failures();
-            // dd($failures);exit;
-            return redirect(route('admin.productNetOnes.index'))->with('error', $failures[0]);
-        }
-        return back();
-    }
-
-    /**
-     * Method to export product list from database into downloadable excel file.xlsx
-     * @author: Roy
-     * 
-     */
-    public function downloadAsExcel() {
-        return Excel::download(new ProductsExport, 'products.xlsx');
-    }
-
-}
+       }

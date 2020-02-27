@@ -67,10 +67,10 @@
                         <li class="user-header bg-light-blue">
                             {{-- @if($userInfo['currentUser']['picture']!='' || $userInfo['currentUser']['picture']!=null) --}}
                                 {{-- <img src="{{  $userInfo['currentUser']['picture'] }}" alt="img" height="35px" width="35px" --}}
-                                     {{-- class="rounded-circle img-fluid float-left"/> --}}
+                                     class="rounded-circle img-fluid float-left"/>
                             {{-- @else --}}
                                 {{-- <img src="{{ asset('images/authors/no_avatar.jpg') }}" alt="img" height="35px" width="35px" --}}
-                                     {{-- class="rounded-circle img-fluid float-left"/> --}}
+                                     class="rounded-circle img-fluid float-left"/>
                             {{-- @endif --}}
                             {{-- <p class="topprofiletext">{{ $userInfo['currentUser']['first_name'] }} {{ $userInfo['currentUser']['last_name'] }}</p> --}}
                         </li>
